@@ -1,0 +1,75 @@
+.contenedor { /* Contenedor general.*/
+    display: flex; /* Permite que el contenedor se deforme y dos o más contenedores puedan ocupar la misma franja de píxeles.*/
+    height: 100vh; /* El contenedor toma la altura de la pantalla.*/
+}
+  
+.contenedor-izquierdo { /* Contenedor del menú de login.*/
+    width: 33%; /* El contenedor toma un ancho equivalente a 33 % de la pantalla.*/
+}
+  
+.contenedor-derecho { /* Contenedor del fondo de pantalla.*/
+    width: 67%; /* El contenedor toma un ancho equivalente a 67 % de la pantalla.*/
+}
+
+.fondo-login {
+    margin: 0; /* Quitar margen (relleno entre el contenedor <img> y el contenedor <div>).*/
+    padding: 0; /* Quitar relleno entre la imagen propiamente dicha y el contenedor <img>.*/
+    width: 100%;
+    height: 100%;
+}
+
+.centrar {
+    text-align: center; /* Centra horizontalmente.*/
+    margin: auto; /* Centra verticalmente.*/
+}
+
+h2 {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /*Fuente de la letra.*/
+    font-weight: 600; /* Grosor de la negrita.*/
+    font-size: 32px; /* Tamaño de la letra.*/
+}
+
+a {
+    color: #083977;
+}
+
+.centrar a:hover {
+    color: blue;
+    cursor: pointer; /* Pone símbolo de mano apuntando.*/
+}
+
+input {
+    width: 250px; /* Amcho de 250 píxeles.*/
+    height: 25px; /* Altura de 25 píxeles.*/
+    margin-bottom: 5px; /* Deja 5 píxeles de espacio entre cada <input>.*/
+}
+
+input:hover {
+    border: 2px solid #083977;
+    color: #083977;
+}
+
+#btnLogin {
+    width: 260px;
+    height: 33px;
+    background-color: #1EB4E6;
+    color: white;
+}
+
+#btnLogin:hover {
+    border: 2px solid #00bfff;
+    transform: translateY(-2px); /* Desplaza el botón 2 píxeles hacia arriba.*/
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.5); /* Sombreado.*/
+}
+
+#btnPassword {
+    border: 0px;
+    background-color: transparent;
+    border-radius: 100px;
+    width: 25px;
+    height: 25px;
+}
+
+#btnPassword:hover {
+    background-color: rgba(66, 129, 129, 0.5);
+}
