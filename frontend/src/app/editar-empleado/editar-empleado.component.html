@@ -1,0 +1,104 @@
+<app-navbar></app-navbar>
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-6 col-md-3">Home | Agregar Empleado</div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <h1>Agregar empleado</h1>
+        </div>
+    </div>
+
+<!-- Formulario para agregar un empleado -->
+    <div class="row justify-content-center">
+        <div class="col-10 col-md-8">
+            <form class="mt-4">
+                <div class="row">
+                    <div class="mb-3 col">
+                        <label for="nombre" class="form-label">Nombre</label>
+                        <input type="text" class="form-control" placeholder="Nombre" id="nombre">
+                    </div>
+
+                    <div class="mb-3 col">
+                        <label for="apellido" class="form-label">Apellido</label>
+                        <input type="text" class="form-control" placeholder="Apellido" id="apellido">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col">
+                        <label for="dni" class="form-label">DNI</label>
+                        <input type="text" class="form-control" placeholder="Ingrese su documento" id="dni">
+                    </div>
+
+                    <div class="mb-3 col">
+                        <label for="fechaDeNacimiento" class="form-label">Fecha de Nacimiento</label>
+                        <input type="date" class="form-control" id="fechaDeNacimiento">
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col">
+                        <label for="cargo" class="form-label">Cargo</label>
+                        <select class="form-select" id="cargo">
+                            <option selected>Seleccione el cargo</option>
+                            <option value="1">Director Ejecutivo</option>
+                            <option value="2">Director de Operaciones</option>
+                            <option value="3">Desarrollador</option>
+                            <option value="4">QA</option>
+                            <option value="5">Arquitecto</option>
+                            <option value="6">Analista Funcional</option>
+                            <option value="6">Product Owner</option>
+                          </select>
+                    </div>
+                    
+                    <div class="mb-3 col">
+                        <label for="email" class="form-label">Email</label>
+                        <input type="email" class="form-control" id="email" placeholder="email@email.com">
+                    </div>
+                 </div>
+
+                    <p>Modalidad de trabajo</p>
+                    
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="modalidad" id="presencial" checked>
+                        <label class="form-check-label" for="presencial">
+                        Presencial
+                        </label>
+                    </div>
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="modalidad" id="remoto" >
+                        <label class="form-check-label" for="remoto">
+                        Remoto
+                        </label>
+                    </div>
+
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="radio" name="modalidad" id="mixto" >
+                        <label class="form-check-label" for="mixto">
+                        Mixto
+                        </label>
+                    </div>
+
+
+                <label for="horario" class="form-label">Horario de trabajo</label>
+                <div class="input-group mb-3">
+                    <input formControlName="horarioDesde" type="text" class="form-control" placeholder="Desde"
+                        aria-label="desde">
+                    <input formControlName="horarioHasta" type="text" class="form-control" placeholder="Hasta"
+                        aria-label="hasta">
+                </div>
+
+                <div class="text-center">
+                    <div class="d-grid gap-2">
+                        <button class="btn btn-primary bg-button border-0" type="submit">Crear</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
