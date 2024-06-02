@@ -5,6 +5,7 @@ import { EventosComponent } from './eventos/eventos.component';
 import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 import { EventoComponent } from './evento/evento.component';
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
+import { TestComponent } from './test/test.component';
 
 export const routes: Routes = [
     {path:'login', component:LoginComponent},
@@ -13,5 +14,6 @@ export const routes: Routes = [
     {path: 'editar-evento/:id', component: EditarEventoComponent },
     {path: 'evento/:id', component: EventoComponent },
     {path: 'crear-evento', component: CrearEventoComponent },
+    {path: 'empleados', component: TestComponent },
     {path: '**', redirectTo: '/login', pathMatch: 'full' },  //Redirigir a "login" por defecto.
 ];
