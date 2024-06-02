@@ -1,0 +1,20 @@
+*{
+    margin: 5px;
+}
+
+.grid-componente{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 25% 75%;
+    grid-template-areas: 
+    ". nav ."
+    "grid-e grid-e grid-e";
+}
+
+.nav-grid{
+    grid-area: nav;
+}
+
+.grid-empleados{
+    grid-area: grid-e;
+}
