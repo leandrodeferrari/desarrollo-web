@@ -43,41 +43,40 @@
     </div> -->
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 centrar">
-        
-            <table class="table">
-                <thead>
-                    <tr>
-                        <th scope="col">id</th>
-                        <th scope="col">Name</th>
-                        <th scope="col">Apellido</th>
-                        <th scope="col">Categoria</th>
-                        <th scope="col">Active</th>
-                        <th scope="col">Edit</th>
-                    </tr>
-                </thead>
-                @for (empleado of empleados; track empleado.id){
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">id</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Puesto</th>
+                    <th scope="col">Active</th>
+                    <th scope="col">Edit</th>
+                </tr>
+            </thead>
+            @for (empleado of empleados; track empleado.id){
                 <tbody>
                     <tr>
                         <th scope="row">{{empleado.id}}</th>
                         <td>{{empleado.nombre}}</td>
                         <td>{{empleado.apellido}}</td>
-                        <td>{{empleado.fecha_ingreso}}</td>
+                        <td>{{empleado.categoria}}</td>
                         <td>{{empleado.activo}}</td>
                         <td>
                             <div class="col-6 centrar">
-                                <button type="button"
-                                    class="btn btn-primary btn-sm bg-success border-0" style="margin-right: 4px;"><i
-                                        class="bi bi-eye"></i></button>
-                                <button type="button"
-                                    class="btn btn-primary btn-sm bg-primary border-0" style="margin-right: 4px;"><i
-                                        class="bi bi-pen"></i></button>
+                                <button type="button" class="btn btn-primary btn-sm bg-success border-0"
+                                    style="margin-right: 4px;"><i class="bi bi-eye"></i></button>
+                                <button type="button" class="btn btn-primary btn-sm bg-primary border-0"
+                                    style="margin-right: 4px;" (click)="editEmpleado(empleado.id)"><i class="bi bi-pen"></i></button>
                                 <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
-                                ><i class="bi bi-trash3"></i></button>
-                            </div>                    
+                                    style="margin-right: 4px;"><i class="bi bi-trash3"></i></button>
+                            </div>
                         </td>
+                    </tr>
                 </tbody>
             }
         </table>
-</div>
+    </div>
 
 <app-footer></app-footer>

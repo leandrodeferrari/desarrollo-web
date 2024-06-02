@@ -14,9 +14,10 @@ export class EmpleadoService {
     this.empleados =[
       {  
         id: 1,
-        nombre: "Luis",
-        apellido: "Martínez",
+        nombre: "Rick",
+        apellido: "Sanchez",
         documento: 12345678,
+        categoria: "inventor",
         fecha_nacimiento: new Date('1990-01-01'),
         fecha_ingreso:new Date('1990-01-01'),
         activo: true
@@ -24,20 +25,32 @@ export class EmpleadoService {
       {
         id: 2,
         nombre: "Ana",
-        apellido: "González",
+        apellido: "Banana",
         documento: 87654321,
+        categoria: "Desarrolladora jr",
         fecha_nacimiento: new Date('1990-01-01'),
         fecha_ingreso: new Date('1990-01-01'),
         activo: false
       },
       {
         id: 3,
-        nombre: "Carlos",
-        apellido: "Rodríguez",
+        nombre: "Jose",
+        apellido: "Taretto",
         documento: 11223344,
+        categoria: "Dev FullStack Node.js 3D + un solo link + MF ",
         fecha_nacimiento: new Date('1990-01-01'),
         fecha_ingreso: new Date('1990-01-01'),
         activo: true
+      },
+      {
+        id: 4,
+        nombre: "Pepe",
+        apellido: "Pateatraseros",
+        documento: 11223344,
+        categoria: "QA FS AUTOMEISHON",
+        fecha_nacimiento: new Date('1990-01-01'),
+        fecha_ingreso: new Date('1990-01-01'),
+        activo: false
       } 
     ]
   }
