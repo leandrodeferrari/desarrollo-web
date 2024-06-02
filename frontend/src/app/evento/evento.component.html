@@ -1,0 +1,40 @@
+<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
+
+<div class="container-fluid mt-4">
+    <div class="row mt-4">
+        <div class="col-6 col-md-3">Home | Evento</div>
+    </div>
+
+    <div class="row justify-content-center mt-4">
+        <div class="col-10 col-md-8">
+            @if (evento) {
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <h1 class="card-title">{{evento.titulo}}</h1>
+                    </div>
+                </div>
+
+                <div class="col mt-4">
+                    <div class="card">
+                        <img [src]="evento.imagenUrl" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <p class="card-text">{{evento.descripcion}}</p>
+                        </div>
+                        <div class="card-footer">
+                            <div class="row">
+                                <div class="col-6">
+                                    <small class="text-body-secondary"><i class="bi bi-calendar2-week"></i> {{evento.fecha}} ~ {{evento.horario}}</small>
+                                </div>
+                                <div class="col-6 text-end">
+                                    <i class="bi bi-geo-alt"></i> {{evento.ubicacion}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<app-footer></app-footer>
