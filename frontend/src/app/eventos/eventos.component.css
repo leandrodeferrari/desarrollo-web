@@ -1,0 +1,8 @@
+.bg-navbar {
+    background-color: #1eb4e6;
+}
+
+.btn-bg-hover:hover {
+    background-color: #1eb4e6;
+    border: 0;
+}

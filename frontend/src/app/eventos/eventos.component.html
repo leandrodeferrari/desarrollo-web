@@ -1,0 +1,76 @@
+<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'crear-evento', texto: 'Crear evento'}]"></app-navbar>
+
+<div class="container-fluid">
+    <div class="row mt-4">
+        <div class="col-6 col-md-3">Home | Eventos</div>
+    </div>
+
+    <div class="row">
+        <div class="col-12 text-center">
+            <h1>Eventos</h1>
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-6 align-content-center">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Buscar..." aria-label="buscador"
+                    aria-describedby="button-addon2">
+                <button class="btn btn-outline-secondary btn-bg-hover" type="button" id="button-addon2"><i
+                        class="bi bi-search"></i></button>
+            </div>
+        </div>
+        <div class="col-2 align-content-center text-start">
+            <button type="button" class="btn btn-primary btn-sm bg-navbar border-0"><i
+                    class="bi bi-funnel-fill"></i></button>
+        </div>
+        <div class="col-4 align-content-center text-end">
+            <button type="button" [routerLink]="['/crear-evento']" class="btn btn-primary btn-sm bg-navbar border-0"><i
+                    class="bi bi-plus-circle"></i>
+                Crear evento</button>
+        </div>
+    </div>
+
+    @if (eventos.length === 0) {
+    <div class="row mt-4">
+        <div class="col-12 text-center">
+            <h2>No hay eventos</h2>
+        </div>
+    </div>
+    }
+
+    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
+
+        @for (evento of eventos; track evento.id) {
+        <div class="col">
+            <div class="card">
+                <img [src]="evento.imagenUrl" class="card-img-top" alt="...">
+                <div class="card-body">
+                    <h5 class="card-title">{{evento.titulo}}</h5>
+                </div>
+                <div class="card-footer">
+                    <div class="row">
+                        <div class="col-6">
+                            <small class="text-body-secondary"><i class="bi bi-calendar2-week"></i> {{evento.fecha}} ~
+                                {{evento.horario}}</small>
+                        </div>
+                        <div class="col-6 text-end">
+                            <button type="button" [routerLink]="['/evento', evento.id]"
+                                class="btn btn-primary btn-sm bg-success border-0" style="margin-right: 4px;"><i
+                                    class="bi bi-eye"></i></button>
+                            <button type="button" [routerLink]="['/editar-evento', evento.id]"
+                                class="btn btn-primary btn-sm bg-primary border-0" style="margin-right: 4px;"><i
+                                    class="bi bi-pen"></i></button>
+                            <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
+                                (click)="borrar(evento.id)"><i class="bi bi-trash3"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        }
+
+    </div>
+</div>
+
+<app-footer></app-footer>
