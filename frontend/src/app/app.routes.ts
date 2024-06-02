@@ -7,6 +7,9 @@ import { EventoComponent } from './evento/evento.component';
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
 import { TestComponent } from './test/test.component';
 import { EditEmpleadoComponent } from './edit-empleado/edit-empleado.component';
+import { AgregarEmpleadoComponent } from './agregar-empleado/agregar-empleado.component';
+import { EditarEmpleadoComponent } from './editar-empleado/editar-empleado.component';
+import { DetalleDeEmpleadoComponent } from './detalle-de-empleado/detalle-de-empleado.component';
 
 export const routes: Routes = [
     {path:'login', component:LoginComponent},
@@ -16,6 +19,8 @@ export const routes: Routes = [
     {path: 'evento/:id', component: EventoComponent },
     {path: 'crear-evento', component: CrearEventoComponent },
     {path: 'empleados', component: TestComponent },
-    {path: 'editar-empleado', component: EditEmpleadoComponent },
+    {path: 'empleados/', component:EditarEmpleadoComponent },
+    {path: 'agregar-empleado', component: AgregarEmpleadoComponent},
+    {path: 'empleados/:id', component: DetalleDeEmpleadoComponent},
     {path: '**', redirectTo: '/login', pathMatch: 'full' },  //Redirigir a "login" por defecto.
 ];
