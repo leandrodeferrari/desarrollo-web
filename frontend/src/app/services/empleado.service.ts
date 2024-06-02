@@ -51,6 +51,16 @@ export class EmpleadoService {
         fecha_nacimiento: new Date('1990-01-01'),
         fecha_ingreso: new Date('1990-01-01'),
         activo: false
+      },
+      {
+        id: 4,
+        nombre: "Brian",
+        apellido: "Reactivo",
+        documento: 11223344,
+        categoria: "un alma que valga en pena por trabajar con php",
+        fecha_nacimiento: new Date('1990-01-01'),
+        fecha_ingreso: new Date('1990-01-01'),
+        activo: false
       } 
     ]
   }
