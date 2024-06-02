@@ -1,20 +1,56 @@
-*{
-    margin: 5px;
+.cabecera {
+    width: 100%;
+    height: 60px;
+    background-color: #1EB4E6;
+    color: white;
+
+    display: flex;
+    justify-content: space-between; /* Espacio entre los elementos.*/
+    align-items: center; /* Alinea los elementos verticalmente.*/
 }
 
-.grid-componente{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
-    grid-template-rows: 25% 75%;
-    grid-template-areas: 
-    ". nav ."
-    "grid-e grid-e grid-e";
+#btnSesion {
+    margin-left: auto;
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
 }
 
-.nav-grid{
-    grid-area: nav;
+.contenedor { /* Contenedor general.*/
+    display: flex; /* Permite que el contenedor se deforme y dos o más contenedores puedan ocupar la misma franja de píxeles.*/
+    height: 80vh; /* El contenedor toma la altura de la pantalla.*/
+}
+  
+.sub-contenedor {
+    width: 33%; /* El contenedor toma un ancho equivalente a 33 % de la pantalla.*/
 }
 
-.grid-empleados{
-    grid-area: grid-e;
+.centrar { /* ¿Debería estar en el CSS global?*/
+    text-align: center; /* Centra horizontalmente.*/
+    margin: auto; /* Centra verticalmente.*/
+}
+
+#btnAgregarEventos,
+#btnEventos,
+#btnEmpleados {
+    width: 250px;
+    height: 250px;
+    transform: translateY(-2px); /* Desplaza el botón 2 píxeles hacia arriba.*/
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.5); /* Sombreado.*/
+}
+
+#btnAgregarEventos:hover,
+#btnEventos:hover,
+#btnEmpleados:hover {
+    color: #1EB4E6;
+}
+
+#btnLogout {
+    background-color: rgb(230, 40, 40); 
+    border-color: rgb(230, 40, 40);
+}
+
+#btnLogout:hover {
+    background-color: red;
+    border-color: red;
 }
