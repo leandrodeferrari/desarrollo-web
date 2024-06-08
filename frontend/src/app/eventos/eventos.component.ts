@@ -1,5 +1,5 @@
-import { Component, inject } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Component, OnInit, inject } from '@angular/core';
+import { RouterLink } from '@angular/router';
 import { FooterComponent } from "../footer/footer.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { EventoService } from '../services/evento.service';
@@ -10,17 +10,27 @@ import { Evento } from '../interfaces/evento';
   standalone: true,
   templateUrl: './eventos.component.html',
   styleUrl: './eventos.component.css',
-  imports: [RouterModule, FooterComponent, NavbarComponent]
+  imports: [RouterLink, FooterComponent, NavbarComponent]
 })
-export class EventosComponent {
+export class EventosComponent implements OnInit {
   private eventoService = inject(EventoService);
-  
-  public eventos: Evento[] = this.eventoService.eventos;
+  public eventos: Evento[] = [];
 
-  constructor() {
+  /**
+  * Obtiene todos los eventos a traves del servicio y se lo asgina a la propiedad eventos.
+  *
+  * @return {void}
+  */
+  ngOnInit(): void {
     this.eventos = this.eventoService.obtenerTodos();
   }
 
+  /**
+  * Elimina un evento de la lista de eventos, a traves de su ID, y actualiza el array de todos los eventos.
+  *
+  * @param {number} id - El ID del evento que deseamos eliminar.
+  * @return {void}
+  */
   borrar(id: number): void {
     this.eventos = this.eventoService.borrar(id);
   }

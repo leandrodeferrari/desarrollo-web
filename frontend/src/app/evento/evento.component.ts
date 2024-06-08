@@ -3,16 +3,7 @@ import { FooterComponent } from "../footer/footer.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { EventoService } from '../services/evento.service';
 import { ActivatedRoute } from '@angular/router';
-
-interface Evento {
-    id: number;
-    titulo: string;
-    imagenUrl: string;
-    descripcion: string;
-    fecha: string;
-    horario: string;
-    ubicacion?: string;
-  }
+import { Evento } from '../interfaces/evento';
 
 @Component({
     selector: 'app-evento',
@@ -22,15 +13,20 @@ interface Evento {
     imports: [FooterComponent, NavbarComponent]
 })
 export class EventoComponent implements OnInit {
-    private _route = inject(ActivatedRoute);
+    private route = inject(ActivatedRoute);
     private eventoService: EventoService = inject(EventoService);
-
     public evento?: Evento;
 
     constructor(){}
 
+    /**
+    * Recupera el ID a traves deL parámetro de la URL y busca la información del evento con el 
+    * método del servicio. Si se encuentra el evento, se asigna a la propiedad evento.
+    *
+    * @return {void}
+    */
     ngOnInit(): void {
-        this._route.params.subscribe(param => {
+        this.route.params.subscribe(param => {
             const id: number = param['id'];
             let evento = this.eventoService.obtenerPorId(id);
             

@@ -1,4 +1,4 @@
-<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'crear-evento', texto: 'Crear evento'}]"></app-navbar>
+<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}]"></app-navbar>
 
 <div class="container-fluid">
     <div class="row mt-4">
@@ -15,17 +15,17 @@
         <div class="col-6 align-content-center">
             <div class="input-group">
                 <input type="text" class="form-control" placeholder="Buscar..." aria-label="buscador"
-                    aria-describedby="button-addon2">
-                <button class="btn btn-outline-secondary btn-bg-hover" type="button" id="button-addon2"><i
+                    aria-describedby="boton-buscar">
+                <button class="btn btn-outline-secondary btn-bg-hover" type="button" id="boton-buscar"><i
                         class="bi bi-search"></i></button>
             </div>
         </div>
         <div class="col-2 align-content-center text-start">
-            <button type="button" class="btn btn-primary btn-sm bg-navbar border-0"><i
+            <button type="button" class="btn btn-primary btn-sm bg-eventos border-0"><i
                     class="bi bi-funnel-fill"></i></button>
         </div>
         <div class="col-4 align-content-center text-end">
-            <button type="button" [routerLink]="['/crear-evento']" class="btn btn-primary btn-sm bg-navbar border-0"><i
+            <button type="button" [routerLink]="['/crear-evento']" class="btn btn-primary btn-sm bg-eventos border-0"><i
                     class="bi bi-plus-circle"></i>
                 Crear evento</button>
         </div>
@@ -44,7 +44,7 @@
         @for (evento of eventos; track evento.id) {
         <div class="col">
             <div class="card">
-                <img [src]="evento.imagenUrl" class="card-img-top" alt="...">
+                <img [src]="evento.imagenUrl" class="card-img-top" alt="Imagen del evento">
                 <div class="card-body">
                     <h5 class="card-title">{{evento.titulo}}</h5>
                 </div>
@@ -56,10 +56,10 @@
                         </div>
                         <div class="col-6 text-end">
                             <button type="button" [routerLink]="['/evento', evento.id]"
-                                class="btn btn-primary btn-sm bg-success border-0" style="margin-right: 4px;"><i
+                                class="btn btn-primary btn-sm bg-success border-0 me-2"><i
                                     class="bi bi-eye"></i></button>
                             <button type="button" [routerLink]="['/editar-evento', evento.id]"
-                                class="btn btn-primary btn-sm bg-primary border-0" style="margin-right: 4px;"><i
+                                class="btn btn-primary btn-sm bg-primary border-0 me-2"><i
                                     class="bi bi-pen"></i></button>
                             <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
                                 (click)="borrar(evento.id)"><i class="bi bi-trash3"></i></button>
