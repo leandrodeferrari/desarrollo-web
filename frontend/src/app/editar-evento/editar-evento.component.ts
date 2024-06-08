@@ -34,9 +34,16 @@ export class EditarEventoComponent {
         });
     }
 
+    /**
+    * Recupera los datos del evento a partir de los parámetros de la ruta. Si se encuentra el evento, 
+    * establece las propiedades del componente y rellena los campos del formulario con los datos del 
+    * evento.
+    *
+    * @return {void}
+    */
     ngOnInit(): void {
         this.route.params.subscribe(param => {
-            const id: number = +param['id'];
+            const id: number = param['id'];
             let eventoEncontrado: Evento = this.eventoService.obtenerPorId(id);
 
             if (eventoEncontrado) {
@@ -62,6 +69,15 @@ export class EditarEventoComponent {
         });
     }
 
+    /**
+    * Edita un evento actualizando sus propiedades con los valores del formulario y navegando a la 
+    * página 'eventos' si el formulario es válido.
+    *
+    * @param {Event} event - El evento que contiene los valores de las propiedades que queremos 
+    * actualizar.
+    * 
+    * @return {void}
+    */
     editar(event: Event): void {
         event.preventDefault();
 
@@ -94,6 +110,13 @@ export class EditarEventoComponent {
         }
     }
 
+    /**
+    * Comprueba si un control dado del formulario tiene un error específico y ha sido tocado.
+    *
+    * @param {string} control - El nombre del control a comprobar.
+    * @param {string} error - El nombre del error a comprobar.
+    * @return {boolean} Devuelve true si el control tiene el error especificado y ha sido tocado, sino false.
+    */
     tieneErrores(control: string, error: string): boolean {
         return this.formEditarEvento.get(control)?.hasError(error) && this.formEditarEvento.get(control)?.touched || false;
     }

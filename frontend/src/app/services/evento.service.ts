@@ -66,16 +66,32 @@ export class EventoService {
     ];
   }
 
+  /**
+  * Obtiene todos los eventos.
+  *
+  * @return {Evento[]} Retorna una array con todos los eventos.
+  */
   obtenerTodos(): Evento[] {
     return this.eventos;
   }
 
+  /**
+  * Obtiene un evento a traves de su ID.
+  *
+  * @param {number} id - El ID del evento que queremos obtener.
+  * @return {Evento} Retorna el evento con el ID especificado o un evento vacío si no lo encuentra.
+  */
   obtenerPorId(id: number): Evento {
     const evento = this.eventos.find(evento => evento.id == id);
 
     return evento ? evento : this.obtenerEventoVacio();
   }
 
+  /**
+  * Obtiene un evento con valores por defecto en las propiedades.
+  *
+  * @return {Evento} Retorna un evento con valores por defecto en las propiedades.
+  */
   private obtenerEventoVacio(): Evento {
     return {
       id: 0,
@@ -88,6 +104,12 @@ export class EventoService {
     };
   }
 
+  /**
+  * Crea un nuevo evento y lo agrega al array de todos los eventos.
+  *
+  * @param {Evento} evento - El evento que se quiere crear.
+  * @return {Evento} Retorna el evento creado.
+  */
   crear(evento: Evento): Evento {
     let id: number = this.eventos.length + 1;
 
@@ -106,6 +128,12 @@ export class EventoService {
     return eventoCreado;
   }
 
+  /**
+  * Actualiza un evento en la lista de eventos con las propiedades y ID del eventoParaEditar proporcionado.
+  *
+  * @param {Evento} eventoParaEditar - El evento que contiene los valores de las propiedades que queremos actualizar.
+  * @return {void}
+  */
   editar(eventoParaEditar: Evento): void {
     this.eventos.forEach(evento => {
       if (evento.id == eventoParaEditar.id) {
@@ -119,6 +147,12 @@ export class EventoService {
     });
   }
 
+  /**
+  * Elimina un evento de la lista de eventos, a traves de su ID, y actualiza el array de todos los eventos.
+  *
+  * @param {number} id - El ID del evento que deseamos eliminar.
+  * @return {Evento[]} Retorna la lista de eventos sin el evento eliminado.
+  */
   borrar(id: number): Evento[] {
     this.eventos = this.eventos.filter(evento => evento.id !== id);
 
