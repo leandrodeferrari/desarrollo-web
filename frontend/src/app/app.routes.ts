@@ -22,5 +22,6 @@ export const routes: Routes = [
     {path: 'empleados/', component:EditarEmpleadoComponent },
     {path: 'agregar-empleado', component: AgregarEmpleadoComponent},
     {path: 'empleados/:id', component: DetalleDeEmpleadoComponent},
+    {path: 'editEmpleadoComponent/:id', component: EditEmpleadoComponent},
     {path: '**', redirectTo: '/login', pathMatch: 'full' },  //Redirigir a "login" por defecto.
 ];
