@@ -66,7 +66,7 @@ export class EmpleadoService {
         hora_entrada: "10:00",
         hora_salida: "17:00",
         activo: false
-      } 
+      }
     ];
   }
   /**
@@ -146,6 +146,9 @@ export class EmpleadoService {
       }
     });
   }
+
+  
+
 }
 
 

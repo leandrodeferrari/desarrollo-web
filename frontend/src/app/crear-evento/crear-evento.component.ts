@@ -17,7 +17,6 @@ export class CrearEventoComponent {
     private fb: FormBuilder = inject(FormBuilder);
     private router: Router = inject(Router);
     private eventoService: EventoService = inject(EventoService);
-
     public formCrearEvento: FormGroup;
 
     constructor() {
@@ -32,6 +31,12 @@ export class CrearEventoComponent {
         });
     }
 
+    /**
+    * Crea un nuevo evento y redirige a la página de eventos si el formulario es válido.
+    *
+    * @param {Event} event - El objeto del tipo Event que activó el método.
+    * @return {void}
+    */
     crear(event: Event): void {
         event.preventDefault();
 
@@ -65,6 +70,13 @@ export class CrearEventoComponent {
         }
     }
 
+    /**
+    * Comprueba si un control dado del formulario tiene un error específico y ha sido tocado.
+    *
+    * @param {string} control - El nombre del control a comprobar.
+    * @param {string} error - El nombre del error a comprobar.
+    * @return {boolean} Devuelve true si el control tiene el error especificado y ha sido tocado, sino false.
+    */
     tieneErrores(control: string, error: string): boolean {
         return this.formCrearEvento.get(control)?.hasError(error) && this.formCrearEvento.get(control)?.touched || false;
     }
