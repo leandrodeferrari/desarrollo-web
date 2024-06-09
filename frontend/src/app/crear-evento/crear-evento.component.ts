@@ -4,20 +4,21 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Evento } from '../interfaces/evento';
 import { EventoService } from '../services/evento.service';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
     selector: 'app-crear-evento',
     standalone: true,
     templateUrl: './crear-evento.component.html',
     styleUrl: './crear-evento.component.css',
-    imports: [FooterComponent, NavbarComponent, ReactiveFormsModule]
+    imports: [FooterComponent, NavbarComponent, ReactiveFormsModule, RouterLink]
 })
 export class CrearEventoComponent {
     private fb: FormBuilder = inject(FormBuilder);
     private router: Router = inject(Router);
     private eventoService: EventoService = inject(EventoService);
     public formCrearEvento: FormGroup;
+    public btn_atras: string = "< Ir atrás";
 
     constructor() {
         this.formCrearEvento = this.fb.group({

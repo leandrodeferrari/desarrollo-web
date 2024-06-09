@@ -2,7 +2,7 @@ import { Component, OnInit, inject } from '@angular/core';
 import { FooterComponent } from "../footer/footer.component";
 import { NavbarComponent } from "../navbar/navbar.component";
 import { EventoService } from '../services/evento.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Evento } from '../interfaces/evento';
 
 @Component({
@@ -10,12 +10,13 @@ import { Evento } from '../interfaces/evento';
     standalone: true,
     templateUrl: './evento.component.html',
     styleUrl: './evento.component.css',
-    imports: [FooterComponent, NavbarComponent]
+    imports: [FooterComponent, NavbarComponent, RouterLink]
 })
 export class EventoComponent implements OnInit {
     private route = inject(ActivatedRoute);
     private eventoService: EventoService = inject(EventoService);
     public evento?: Evento;
+    public btn_atras: string = "< Ir atrás";
 
     constructor(){}
 

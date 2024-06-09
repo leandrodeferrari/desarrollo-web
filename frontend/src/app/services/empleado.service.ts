@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
 import { Empleado } from '../interfaces/empleado';
-import { EditEmpleadoComponent } from '../edit-empleado/edit-empleado.component';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Injectable({
   providedIn: 'root'

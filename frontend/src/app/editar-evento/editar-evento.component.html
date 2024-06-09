@@ -1,13 +1,19 @@
-<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
+<app-navbar
+    [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
 
 <div class="container-fluid">
     <div class="row mt-4">
-        <div class="col-6 col-md-3">Home | Empleados | Editar Evento</div>
+        <div class="col">Home | Eventos | Modificar Evento</div>
+    </div>
+
+    <!-- Botón para ir atrás -->
+    <div class="mt-4">
+        <button type="button" [routerLink]="['/eventos']" class="btn btn-secondary btn-sm"> {{btn_atras}} </button>
     </div>
 
     <div class="row mt-4">
         <div class="col-12 text-center">
-            <h1>Editar evento</h1>
+            <h1>Modificar evento</h1>
         </div>
     </div>
 
@@ -16,8 +22,8 @@
             <form [formGroup]="formEditarEvento" (ngSubmit)="editar($event)" class="mt-4">
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
-                    <input formControlName="titulo" [value]="evento?.titulo" type="text" class="form-control" id="titulo"
-                        aria-describedby="titulo">
+                    <input formControlName="titulo" [value]="evento?.titulo" type="text" class="form-control"
+                        id="titulo" aria-describedby="titulo">
                 </div>
 
                 @if (tieneErrores('titulo', 'required')) {
@@ -52,7 +58,7 @@
                     <label for="fecha" class="form-label">Fecha</label>
                     <input formControlName="fecha" type="date" class="form-control" id="fecha">
                 </div>
-                
+
                 @if (tieneErrores('fecha', 'required')) {
                 <div class="alert alert-danger alert-dismissible fade show" role="alert">
                     Campo requerido
@@ -61,8 +67,8 @@
 
                 <div class="mb-3">
                     <label for="horario" class="form-label">Horario</label>
-                    <input formControlName="horario" [value]="evento?.horario" type="text" class="form-control" id="horario"
-                        aria-describedby="horario">
+                    <input formControlName="horario" [value]="evento?.horario" type="text" class="form-control"
+                        id="horario" aria-describedby="horario">
                 </div>
 
                 @if (tieneErrores('horario', 'required')) {
@@ -83,9 +89,18 @@
                 </div>
                 }
 
-                <div class="text-center">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary bg-button border-0" type="submit" [disabled]="formEditarEvento.invalid">Editar</button>
+                <div class="row">
+                    <div class="text-center mt-3 col-6">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-danger border-0" type="button"
+                                [routerLink]="['/eventos']">Cancelar</button>
+                        </div>
+                    </div>
+                    <div class="text-centermt-3 mt-3 col-6">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary border-0" type="submit"
+                                [disabled]="formEditarEvento.invalid">Modificar</button>
+                        </div>
                     </div>
                 </div>
             </form>

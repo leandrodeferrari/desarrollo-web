@@ -1,8 +1,14 @@
-<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
+<app-navbar
+    [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
 
 <div class="container-fluid mt-4">
     <div class="row mt-4">
-        <div class="col-6 col-md-3">Home | Evento</div>
+        <div class="col">Home | Eventos | Detalle evento</div>
+    </div>
+
+    <!-- Botón para ir atrás -->
+    <div class="mt-4">
+        <button type="button" [routerLink]="['/eventos']" class="btn btn-secondary btn-sm"> {{btn_atras}} </button>
     </div>
 
     <div class="row justify-content-center mt-4">

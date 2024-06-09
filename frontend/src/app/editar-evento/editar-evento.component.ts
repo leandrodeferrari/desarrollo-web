@@ -3,7 +3,7 @@ import { NavbarComponent } from "../navbar/navbar.component";
 import { FooterComponent } from "../footer/footer.component";
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EventoService } from '../services/evento.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { Evento } from '../interfaces/evento';
 
 @Component({
@@ -11,7 +11,7 @@ import { Evento } from '../interfaces/evento';
     standalone: true,
     templateUrl: './editar-evento.component.html',
     styleUrl: './editar-evento.component.css',
-    imports: [NavbarComponent, FooterComponent, ReactiveFormsModule]
+    imports: [NavbarComponent, FooterComponent, ReactiveFormsModule, RouterLink]
 })
 export class EditarEventoComponent {
     private route: ActivatedRoute = inject(ActivatedRoute);
@@ -19,7 +19,7 @@ export class EditarEventoComponent {
     private eventoService: EventoService = inject(EventoService);
     private router: Router = inject(Router);
     private id: number = 0;
-
+    public btn_atras: string = "< Ir atrás";
     public formEditarEvento: FormGroup;
     public evento?: Evento;
 
