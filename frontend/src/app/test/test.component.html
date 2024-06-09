@@ -30,50 +30,51 @@
         </div>
     </div>
 
-    <div class="row row-cols-1 row-cols-md-3 g-4 mt-4 centrar">
-
-        <table class="table">
-            <thead>
-                <tr>
-                    <th scope="col">id</th>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Apellido</th>
-                    <th scope="col">Cargo</th>
-                    <th scope="col">Activo</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            @for (empleado of empleados; track empleado.id){
-                <tbody>
+    <div class="row mt-5 centrar">
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
                     <tr>
-                        <th scope="row">{{empleado.id}}</th>
-                        <td>{{empleado.nombre}}</td>
-                        <td>{{empleado.apellido}}</td>
-                        <td>{{empleado.categoria}}</td>
-                        @if (empleado.activo == true) 
-                        {
-                            <td>Activo</td>
-                        }
-                        @else 
-                        {
-                            <td>Inactivo</td>
-                        }
-                        
-                        <td>
-                            <div class="col-6 centrar">
-                                <button type="button" class="btn btn-primary btn-sm bg-success border-0"
-                                    style="margin-right: 4px;" [routerLink]="['/empleados', empleado.id]"><i class="bi bi-eye"></i></button>
-
-                                <button type="button" class="btn btn-primary btn-sm bg-primary border-0"
-                                    style="margin-right: 4px;" [routerLink]="['/editar-empleado', empleado.id]" ><i class="bi bi-pen"></i></button>
-                                <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
-                                    style="margin-right: 4px;" (click)="borrar(empleado.id)"><i class="bi bi-trash3"></i></button>
-                            </div>
-                        </td>
+                        <th scope="col">id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Cargo</th>
+                        <th scope="col">Activo</th>
+                        <th scope="col">Acciones</th>
                     </tr>
-                </tbody>
-            }
-        </table>
+                </thead>
+                @for (empleado of empleados; track empleado.id){
+                    <tbody>
+                        <tr>
+                            <th scope="row">{{empleado.id}}</th>
+                            <td>{{empleado.nombre}}</td>
+                            <td>{{empleado.apellido}}</td>
+                            <td>{{empleado.categoria}}</td>
+                            @if (empleado.activo == true) 
+                            {
+                                <td>Activo</td>
+                            }
+                            @else 
+                            {
+                                <td>Inactivo</td>
+                            }
+                            
+                            <td>
+                                <div class="col-6 centrar">
+                                    <button type="button" class="btn btn-primary btn-sm bg-success mb-2 mb-lg-0 border-0"
+                                        style="margin-right: 4px;" [routerLink]="['/empleados', empleado.id]"><i class="bi bi-eye"></i></button>
+    
+                                    <button type="button" class="btn btn-primary btn-sm bg-primary mb-2 mb-lg-0 border-0"
+                                        style="margin-right: 4px;" [routerLink]="['/editar-empleado', empleado.id]" ><i class="bi bi-pen"></i></button>
+                                    <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
+                                        style="margin-right: 4px;" (click)="borrar(empleado.id)"><i class="bi bi-trash3"></i></button>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                }
+            </table>
+        </div>
     </div>
 </div>
 
