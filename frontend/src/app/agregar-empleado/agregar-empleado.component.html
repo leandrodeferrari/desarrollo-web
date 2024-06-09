@@ -1,101 +1,188 @@
-<app-navbar></app-navbar>
+<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'crear-evento', texto: 'Crear evento'}]"></app-navbar>
 
 <div class="container-fluid">
+    
+    <!-- Breadcrumbs -->
     <div class="row mt-4">
-        <div class="col-6 col-md-3">Home | Agregar Empleado</div>
+        <div class="col">Home | Empleados |  Agregar Empleado</div>
     </div>
 
+    <!-- Botón para ir atrás -->
+    <div class="mt-4">
+        <button type="button" [routerLink]="['/empleados']" class="btn btn-secondary btn-sm"> {{btn_atras}} </button>
+    </div>
+
+    <!-- Título del formulario -->
     <div class="row mt-4">
         <div class="col-12 text-center">
             <h1>Agregar empleado</h1>
         </div>
     </div>
 
-<!-- Formulario para agregar un empleado -->
+    <!-- Formulario para agregar un empleado -->
     <div class="row justify-content-center">
         <div class="col-10 col-md-8">
-            <form class="mt-4">
+            <form [formGroup]="nuevoEmpleado" (ngSubmit)="crear($event)"  class="mt-4">
+                
                 <div class="row">
-                    <div class="mb-3 col">
+
+                    <!-- Campo Nombre -->
+                    <div class="mb-3 col-12 col-md-6">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" placeholder="Nombre" id="nombre">
+                        <input type="text" formControlName="nombre" class="form-control" placeholder="Nombre" id="nombre">
+                        
+                        @if (tieneErrores('nombre', 'required')) 
+                        {  
+                            <div class="alert alert-danger" role="alert">
+                            El nombre es un campo obligatorio.
+                            </div>
+                        }
                     </div>
 
-                    <div class="mb-3 col">
+                    <!-- Campo Apellido -->
+                    <div class="mb-3 col-12 col-md-6">
                         <label for="apellido" class="form-label">Apellido</label>
-                        <input type="text" class="form-control" placeholder="Apellido" id="apellido">
+                        <input type="text" formControlName="apellido" class="form-control" id="apellido" placeholder="Apellido">
+                        
+                        @if (tieneErrores('apellido', 'required')) 
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                El apellido es un campo obligatorio.
+                            </div>
+                        }
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="mb-3 col">
+
+                    <!-- Campo Documento -->
+                    <div class="mb-3 col-12 col-md-6">
                         <label for="dni" class="form-label">DNI</label>
-                        <input type="text" class="form-control" placeholder="Ingrese su documento" id="dni">
+                        <input type="text" formControlName="documento" class="form-control" id="dni" placeholder="Ingrese su documento">
+                        
+                        @if (tieneErrores('documento', 'required')) 
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                El documento es un campo obligatorio.
+                            </div>
+                        }
                     </div>
-
-                    <div class="mb-3 col">
+                    
+                    <!-- Campo Fecha de Nacimiento -->
+                    <div class="mb-3 col-12 col-md-6">
                         <label for="fechaDeNacimiento" class="form-label">Fecha de Nacimiento</label>
-                        <input type="date" class="form-control" id="fechaDeNacimiento">
+                        <input type="date" formControlName="fecha_nacimiento" class="form-control" id="fechaDeNacimiento">
+                        
+                        @if (tieneErrores('fecha_nacimiento', 'required')) 
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                La fecha de nacimiento es un campo obligatorio.
+                            </div>
+                        }
                     </div>
                 </div>
 
                 <div class="row">
-                    <div class="mb-3 col">
+
+                    <!-- Campo Cargo -->
+                    <div class="mb-3 col-12 col-md-6">
                         <label for="cargo" class="form-label">Cargo</label>
-                        <select class="form-select" id="cargo">
-                            <option selected>Seleccione el cargo</option>
-                            <option value="1">Director Ejecutivo</option>
-                            <option value="2">Director de Operaciones</option>
-                            <option value="3">Desarrollador</option>
-                            <option value="4">QA</option>
-                            <option value="5">Arquitecto</option>
-                            <option value="6">Analista Funcional</option>
-                            <option value="6">Product Owner</option>
-                          </select>
+                        <select class="form-select" formControlName="categoria" id="cargo" >
+                            <option value="" select disabled>Seleccione una opción</option>
+                            <option value="CEO">CEO</option>
+                            <option value="Product Owner">Product Owner</option>
+                            <option value="Desarrollador">Desarrollador</option>
+                            <option value="QA">QA</option>
+                            <option value="Scrum Master">Scrum Master</option>
+                            <option value="Analista Funcional">Analista Funcional</option>
+                            <option value="Tech Lead">Tech Lead</option>
+                        </select>
+                        @if (tieneErrores('categoria', 'required')) 
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                Debe seleccionar algún cargo.
+                            </div>
+                        } 
                     </div>
-                    
-                    <div class="mb-3 col">
+
+                    <!-- Campo Email -->
+                    <div class="mb-3 col-12 col-md-6">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" class="form-control" id="email" placeholder="email@email.com">
-                    </div>
-                 </div>
+                        <input type="email" class="form-control" formControlName="email" id="email" placeholder="email@gmail.com">
+                        @if (tieneErrores('email', 'required')) 
+                        {
+                        <div class="alert alert-danger" role="alert">
+                            El campo email es requerido
+                        </div>
+                        }
 
-                    <p>Modalidad de trabajo</p>
-                    
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="modalidad" id="presencial" checked>
-                        <label class="form-check-label" for="presencial">
+                        @if (tieneErrores('email', 'email')) 
+                        {
+                        <div class="alert alert-danger" role="alert">
+                            Debe ingresar un email válido.
+                        </div>
+                        }
+                    </div>
+                </div>
+
+                <!-- Campo Modalidad de trabajo -->
+                <p>Modalidad de trabajo</p>                   
+                <div class="form-check mb-3 ">
+                    <input class="form-check-input" name="modalidad_trabajo" id="Presencial" type="radio" value="Presencial" formControlName="modalidad_trabajo">
+                    <label class="form-check-label" for="Presencial">
                         Presencial
-                        </label>
-                    </div>
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="modalidad" id="remoto" >
-                        <label class="form-check-label" for="remoto">
-                        Remoto
-                        </label>
-                    </div>
-
-                    <div class="form-check mb-3">
-                        <input class="form-check-input" type="radio" name="modalidad" id="mixto" >
-                        <label class="form-check-label" for="mixto">
-                        Mixto
-                        </label>
-                    </div>
-
-
-                <label for="horario" class="form-label">Horario de trabajo</label>
-                <div class="input-group mb-3">
-                    <input formControlName="horarioDesde" type="text" class="form-control" placeholder="Desde"
-                        aria-label="desde">
-                    <input formControlName="horarioHasta" type="text" class="form-control" placeholder="Hasta"
-                        aria-label="hasta">
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" name="modalidad_trabajo" id="Remoto" type="radio" value="Remoto" formControlName="modalidad_trabajo" >
+                    <label class="form-check-label"  for="Remoto">
+                    Remoto
+                    </label>
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" name="modalidad_trabajo" id="Mixto" type="radio" value="Mixto" formControlName="modalidad_trabajo" >
+                    <label class="form-check-label"  for="Mixto">
+                    Mixto
+                    </label>
                 </div>
 
-                <div class="text-center">
-                    <div class="d-grid gap-2">
-                        <button class="btn btn-primary bg-button border-0" type="submit">Crear</button>
+                <!-- Campo horario de trabajo -->
+                <div class="row">
+                    <div class="mb-3 col-12 col-md-6">
+                        <label for="horario" class="form-label">Hora de entrada</label>
+                        <input type="time" class="form-control" id="horario" formControlName="hora_entrada" >
+                        @if (tieneErrores('hora_entrada', 'required')) 
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                Debe ingresar el horario laboral de entrada.
+                            </div>
+                        }
+                    </div>
+                    <div class="mb-3 col-12 col-md-6">
+                        <label for="horario" class="form-label">Hora de salida</label>
+                        <input type="time" class="form-control" id="horario" formControlName="hora_salida">
+                        @if (tieneErrores('hora_salida', 'required')) 
+                        {
+                            <div class="alert alert-danger" role="alert">
+                                Debe ingresar el horario laboral de salida.
+                            </div>
+                        }
                     </div>
                 </div>
+                
+                <!-- Botones de cancelar y aceptar -->
+                <div class="row">   
+                    <div class="text-center mt-3 col-6">
+                        <div class="d-grid gap-2">
+                                <button class="btn btn-danger bg-button border-0" type="button" [routerLink]="['/empleados']">Cancelar</button>
+                            </div>
+                        </div>
+                    <div class="text-centermt-3 mt-3 col-6">
+                        <div class="d-grid gap-2">
+                            <button class="btn btn-primary bg-button border-0" type="submit">Crear</button>
+                        </div>
+                    </div>
+                </div>  
             </form>
         </div>
     </div>

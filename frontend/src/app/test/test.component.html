@@ -81,13 +81,21 @@
                         <td>{{empleado.nombre}}</td>
                         <td>{{empleado.apellido}}</td>
                         <td>{{empleado.categoria}}</td>
-                        <td>{{empleado.activo}}</td>
+                        @if (empleado.activo == true) 
+                        {
+                            <td>Activo</td>
+                        }
+                        @else 
+                        {
+                            <td>Inactivo</td>
+                        }
+                        
                         <td>
                             <div class="col-6 centrar">
                                 <button type="button" class="btn btn-primary btn-sm bg-success border-0"
                                     style="margin-right: 4px;" [routerLink]="['/empleados', empleado.id]"><i class="bi bi-eye"></i></button>
                                 <button type="button" class="btn btn-primary btn-sm bg-primary border-0"
-                                    style="margin-right: 4px;"><i class="bi bi-pen"></i></button>
+                                    style="margin-right: 4px;" [routerLink]="['/editar-empleado', empleado.id]" ><i class="bi bi-pen"></i></button>
                                 <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
                                     style="margin-right: 4px;"><i class="bi bi-trash3"></i></button>
                             </div>

@@ -6,7 +6,8 @@ export interface Empleado {
     categoria: string;
     fecha_nacimiento: string;
     email: string;
-    modalidadTrabajo: string;
-    horario: string
+    modalidad_trabajo: string;
+    hora_entrada: string;
+    hora_salida: string;
     activo: boolean;
 }
