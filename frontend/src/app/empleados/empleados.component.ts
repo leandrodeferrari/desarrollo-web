@@ -12,11 +12,11 @@ import { EditarEmpleadoComponent } from '../editar-empleado/editar-empleado.comp
   selector: 'app-test',
   standalone: true,
   imports: [NavbarComponent, FooterComponent, AgregarEmpleadoComponent, RouterModule, DetalleDeEmpleadoComponent, EditarEmpleadoComponent],
-  templateUrl: './test.component.html',
-  styleUrl: './test.component.css'
+  templateUrl: './empleados.component.html',
+  styleUrl: './empleados.component.css'
 })
 
-export class TestComponent {
+export class EmpleadosComponent {
 
 
   private empleadoService = inject (EmpleadoService);
@@ -28,7 +28,7 @@ export class TestComponent {
     this.empleados = this.empleadoService.obtenerTodosLosEmpleados();
  }
  borrar(id: number): void {
-  this.empleados = this.empleadoService.eliminarEmpleado(id);
-}
+    this.empleados = this.empleadoService.eliminarEmpleado(id);
+  }
 
 }
