@@ -153,6 +153,7 @@ export class EventoService {
   * @param {number} id - El ID del evento que deseamos eliminar.
   * @return {Evento[]} Retorna la lista de eventos sin el evento eliminado.
   */
+ 
   borrar(id: number): Evento[] {
     this.eventos = this.eventos.filter(evento => evento.id !== id);
 

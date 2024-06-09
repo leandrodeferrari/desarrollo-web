@@ -10,3 +10,4 @@ export interface Empleado {
     horario: string
     activo: boolean;
 }
+    

@@ -1,7 +1,5 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Empleado } from '../interfaces/empleado';
-import { EditEmpleadoComponent } from '../edit-empleado/edit-empleado.component';
-import { Action } from 'rxjs/internal/scheduler/Action';
 
 @Injectable({
   providedIn: 'root'
@@ -68,7 +66,7 @@ export class EmpleadoService {
   /**
    * @param obtenerTodosLosEmpleados Es un método que permite traer todos los registros de los empleados que se encuentran en la BBDD, aunque por ahora al no existir la mismo oficialmente, dichos datos se traen desde el array "empleados" que se encuentra en el servicio.
    */
-  obtenerTodosLosEmpleados(): Empleado[] {
+  obtenerTodosLosEmpleados(): Empleado[]{
     return this.empleados;
   }
 
@@ -123,9 +121,10 @@ export class EmpleadoService {
   /**
    * @param btenerEmpleadosPorId Es un método que permite agregar un registro cuando recibe por parámetro objeto de tipo Empleado y luego recorre el array de empleados para encontrar el id del empleado que coincida con el id del empleado que se le pasa por parametro al método. 
    */
-  editarEmpleado(empleadomodicado: Empleado): void {
+  
+  editarEmpleado(empleadomodicado: Empleado ): void {
     
-    this.empleados.forEach(empleado => {
+    const empleado = this.empleados.find(empleado => {
       if (empleado.id == empleadomodicado.id) {
         empleado.nombre = empleadomodicado.nombre;
         empleado.apellido = empleadomodicado.apellido;
@@ -136,12 +135,18 @@ export class EmpleadoService {
         empleado.modalidadTrabajo = empleado.modalidadTrabajo;
         empleado.horario = empleadomodicado.horario;
         empleado.activo = empleadomodicado.activo
-      }
+
+        return empleado;
+      } else {
+        return null;
+      }      
     });
   }
 
-  
+  eliminarEmpleado(id: number): Empleado[] {
+      this.empleados = this.empleados.filter(empleado => empleado.id !== id);
 
+      console.log(this.empleados)
+      return this.empleados;
+  }
 }
-
-

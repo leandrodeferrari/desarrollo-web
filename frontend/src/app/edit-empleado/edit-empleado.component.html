@@ -17,7 +17,7 @@
                 <div class="row">
                     <div class="mb-3 col">
                         <label for="nombre" class="form-label">Nombre</label>
-                        <input type="text" class="form-control" [value]="empleadoObtenido?.nombre" id="nombre" >
+                        <input id="nombre" [(ngModel)]="nombre" name="nombre" required>
                         
                     </div>
 
@@ -76,11 +76,16 @@
 
                 <div class="text-center">
                     <div class="d-grid gap-2">
-                        <button class="btn btn-primary bg-button border-0" type="submit">Guardar</button>
+                        <button class="btn btn-primary bg-button border-0" type="submit" >Guardar</button>
                     </div>
                     <br>
                     <div class="d-grid gap-2">
                         <button class="btn btn-primary bg-button bg-danger border-0" type="submit">Cancelar</button>
+                    </div>
+
+                    <div class="d-grid gap-2">
+                        <button type="button" class="btn btn-primary btn-sm bg-primary border-0"
+                        style="margin-right: 4px;"[routerLink]="['/empleados']"><i class="bi bi-android2"></i></button>
                     </div>
                 </div>
 
