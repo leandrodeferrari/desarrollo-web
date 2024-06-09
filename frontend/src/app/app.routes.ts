@@ -19,7 +19,7 @@ export const routes: Routes = [
     {path: 'evento/:id', component: EventoComponent },
     {path: 'crear-evento', component: CrearEventoComponent },
     {path: 'empleados', component: TestComponent },
-    {path: 'empleados/', component:EditarEmpleadoComponent },
+    {path: 'editar-empleado/:id', component:EditarEmpleadoComponent },
     {path: 'agregar-empleado', component: AgregarEmpleadoComponent},
     {path: 'empleados/:id', component: DetalleDeEmpleadoComponent},
     {path: 'editarEmpleadoComponent/:id', component: EditEmpleadoComponent},

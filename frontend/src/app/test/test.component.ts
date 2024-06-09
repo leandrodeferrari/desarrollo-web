@@ -7,11 +7,12 @@ import { RouterModule } from '@angular/router';
 import { AgregarEmpleadoComponent } from '../agregar-empleado/agregar-empleado.component';
 import { DetalleDeEmpleadoComponent } from '../detalle-de-empleado/detalle-de-empleado.component';
 import { EditEmpleadoComponent } from '../edit-empleado/edit-empleado.component';
+import { EditarEmpleadoComponent } from '../editar-empleado/editar-empleado.component';
 
 @Component({
   selector: 'app-test',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, AgregarEmpleadoComponent, RouterModule, DetalleDeEmpleadoComponent,EditEmpleadoComponent],
+  imports: [NavbarComponent, FooterComponent, AgregarEmpleadoComponent, RouterModule, DetalleDeEmpleadoComponent, EditarEmpleadoComponent],
   templateUrl: './test.component.html',
   styleUrl: './test.component.css'
 })

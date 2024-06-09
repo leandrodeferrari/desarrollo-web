@@ -18,11 +18,12 @@ export class EmpleadoService {
         apellido: "Sanchez",
         documento: "12345678",
         categoria: "Director Ejecutivo",
-        fecha_nacimiento: "1990-01-01",
+        fecha_nacimiento: "26/10/1996",
         email: "ricksanchez@gmail.com",
-        modalidadTrabajo: "Presencial",
-        horario: "10:00 - 17:00",
-        activo: true
+        modalidad_trabajo: "Presencial",
+        hora_entrada: "10:00",
+        hora_salida: "17:00",
+        activo: false
       },
 
       {
@@ -31,10 +32,11 @@ export class EmpleadoService {
         apellido: "Perez",
         documento: "12345678",
         categoria: "Desarrollador",
-        fecha_nacimiento: "1990-01-01",
-        email: "ricksanchez@gmail.com",
-        modalidadTrabajo: "Presencial",
-        horario: "10:00 - 17:00",
+        fecha_nacimiento: "25/05/1995",
+        email: "mariaperez@gmail.com",
+        modalidad_trabajo: "Remoto",
+        hora_entrada: "10:00",
+        hora_salida: "17:00",
         activo: true
       },
       {
@@ -43,10 +45,11 @@ export class EmpleadoService {
         apellido: "Hernandez",
         documento: "12345678",
         categoria: "QA",
-        fecha_nacimiento: "1990-01-01",
-        email: "ricksanchez@gmail.com",
-        modalidadTrabajo: "Presencial",
-        horario: "10:00 - 17:00",
+        fecha_nacimiento: "25/05/2000",
+        email: "josehernadez@gmail.com",
+        modalidad_trabajo: "Presencial",
+        hora_entrada: "10:00",
+        hora_salida: "17:00",
         activo: true
       },
       {
@@ -55,10 +58,11 @@ export class EmpleadoService {
         apellido: "Sanchez",
         documento: "12345678",
         categoria: "Arquitecto",
-        fecha_nacimiento: "1990-01-01",
-        email: "ricksanchez@gmail.com",
-        modalidadTrabajo: "Presencial",
-        horario: "10:00 - 17:00",
+        fecha_nacimiento: "25/05/1960",
+        email: "martasanchez@gmail.com",
+        modalidad_trabajo: "Mixto",
+        hora_entrada: "10:00",
+        hora_salida: "17:00",
         activo: false
       }
     ];
@@ -88,8 +92,9 @@ export class EmpleadoService {
       categoria:"",
       fecha_nacimiento: "",
       email: "",
-      modalidadTrabajo: "",
-      horario: "",
+      modalidad_trabajo: "",
+      hora_entrada: "",
+      hora_salida: "",
       activo: false
     };
   }
@@ -109,8 +114,9 @@ export class EmpleadoService {
       categoria: empleado.categoria,
       fecha_nacimiento: empleado.fecha_nacimiento,
       email: empleado.email,
-      modalidadTrabajo: empleado.modalidadTrabajo,
-      horario: empleado.horario,
+      modalidad_trabajo: empleado.modalidad_trabajo,
+      hora_entrada: empleado.hora_entrada,
+      hora_salida: empleado.hora_salida,
       activo: empleado.activo
     }
 
@@ -121,25 +127,21 @@ export class EmpleadoService {
   /**
    * @param btenerEmpleadosPorId Es un método que permite agregar un registro cuando recibe por parámetro objeto de tipo Empleado y luego recorre el array de empleados para encontrar el id del empleado que coincida con el id del empleado que se le pasa por parametro al método. 
    */
-  
-  editarEmpleado(empleadomodicado: Empleado ): void {
+  editarEmpleado(empleadomodificado: Empleado): void {
     
-    const empleado = this.empleados.find(empleado => {
-      if (empleado.id == empleadomodicado.id) {
-        empleado.nombre = empleadomodicado.nombre;
-        empleado.apellido = empleadomodicado.apellido;
-        empleado.documento = empleadomodicado.documento;
-        empleado.categoria = empleadomodicado.categoria;
-        empleado.fecha_nacimiento = empleadomodicado.fecha_nacimiento;
-        empleado.email = empleadomodicado.email;
-        empleado.modalidadTrabajo = empleado.modalidadTrabajo;
-        empleado.horario = empleadomodicado.horario;
-        empleado.activo = empleadomodicado.activo
-
-        return empleado;
-      } else {
-        return null;
-      }      
+    this.empleados.forEach(empleado => {
+      if (empleado.id == empleadomodificado.id) {
+        empleado.nombre = empleadomodificado.nombre;
+        empleado.apellido = empleadomodificado.apellido;
+        empleado.documento = empleadomodificado.documento;
+        empleado.categoria = empleadomodificado.categoria;
+        empleado.fecha_nacimiento = empleadomodificado.fecha_nacimiento;
+        empleado.email = empleadomodificado.email;
+        empleado.modalidad_trabajo = empleadomodificado.modalidad_trabajo;
+        empleado.hora_entrada = empleadomodificado.hora_entrada;
+        empleado.hora_salida = empleadomodificado.hora_salida;
+        empleado.activo = empleadomodificado.activo
+      }
     });
   }
 

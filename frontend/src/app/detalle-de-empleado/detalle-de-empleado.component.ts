@@ -1,6 +1,6 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { EmpleadoService } from '../services/empleado.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Empleado } from '../interfaces/empleado';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
@@ -8,25 +8,21 @@ import { FooterComponent } from '../footer/footer.component';
 @Component({
   selector: 'app-detalle-de-empleado',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent],
+  imports: [NavbarComponent, FooterComponent, RouterLink],
   templateUrl: './detalle-de-empleado.component.html',
   styleUrl: './detalle-de-empleado.component.css'
 })
+
 export class DetalleDeEmpleadoComponent implements OnInit {
   private empleadoService: EmpleadoService = inject (EmpleadoService);
   private _route = inject(ActivatedRoute)
   public empleadoObtenido?: Empleado;
+  
   //Propiedades para el formulario
-
-  nombre: string = '';
-  apellido: string= '';
-  documento: string = '';
-  categoria: string = '';
-  fecha_nacimiento: string = '';
-  email: string = "";
-  modalidadTrabajo: string = "";
-  horario: string = "";
-  activo: boolean = false;
+  empleado_activo: string = 'El empleado actualmente está activo en la compañía.';
+  empleado_inactivo: string = 'El empleado actualmente no está activo en la compañía.';
+  btn_atras: string ="< Ir atrás";
+  
 
 
   ngOnInit(): void {
@@ -39,6 +35,5 @@ export class DetalleDeEmpleadoComponent implements OnInit {
           this.empleadoObtenido = empleado;
       }
   });
-  }
-  
+  }  
 }
