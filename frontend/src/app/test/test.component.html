@@ -10,37 +10,6 @@
             <h1>Empleados</h1>
         </div>
     </div>
-
-    <!-- <div class="row mt-4">
-            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
-                <li class="nav-item" role="presentation">
-                        <button class="nav-link" id="pills-contact-tab" data-bs-toggle="pill" data-bs-target="#pills-contact"
-                        type="button" role="tab" aria-controls="pills-contact" aria-selected="false">Nuevo
-                        Profesional</button>
-                </li>
-                <li>
-                    <div class="input-group mb-3">
-                        <input type="text" class="form-control" placeholder="ID" aria-label="Username" aria-describedby="basic-addon1">
-                        <input type="text" class="form-control" placeholder="Nombre" aria-label="Username" aria-describedby="basic-addon1">
-                        <input type="text" class="form-control" placeholder="Apellido" aria-label="Username" aria-describedby="basic-addon1">
-                      </div>
-                </li>
-                <li>
-                    <div class="dropdown">
-                        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Categorias
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">categoria1</a></li>
-                            <li><a class="dropdown-item" href="#">categoria2</a></li>
-                            <li><a class="dropdown-item" href="#">categoria3</a></li>
-                        </ul>
-                    </div>
-                </li>
-            </ul>
-        </div>
-    </div> -->
     <div class="row mt-4">
         <div class="col-6 align-content-center">
             <div class="input-group">
@@ -98,7 +67,7 @@
                                 <button type="button" class="btn btn-primary btn-sm bg-primary border-0"
                                     style="margin-right: 4px;" [routerLink]="['/editar-empleado', empleado.id]" ><i class="bi bi-pen"></i></button>
                                 <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
-                                    style="margin-right: 4px;"><i class="bi bi-trash3"></i></button>
+                                    style="margin-right: 4px;" (click)="borrar(empleado.id)"><i class="bi bi-trash3"></i></button>
                             </div>
                         </td>
                     </tr>
@@ -106,5 +75,6 @@
             }
         </table>
     </div>
+</div>
 
 <app-footer></app-footer>

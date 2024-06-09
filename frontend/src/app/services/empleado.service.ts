@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
 import { Empleado } from '../interfaces/empleado';
 
 @Injectable({
@@ -70,7 +70,7 @@ export class EmpleadoService {
   /**
    * @param obtenerTodosLosEmpleados Es un método que permite traer todos los registros de los empleados que se encuentran en la BBDD, aunque por ahora al no existir la mismo oficialmente, dichos datos se traen desde el array "empleados" que se encuentra en el servicio.
    */
-  obtenerTodosLosEmpleados(): Empleado[] {
+  obtenerTodosLosEmpleados(): Empleado[]{
     return this.empleados;
   }
 
@@ -145,8 +145,10 @@ export class EmpleadoService {
     });
   }
 
-  
+  eliminarEmpleado(id: number): Empleado[] {
+      this.empleados = this.empleados.filter(empleado => empleado.id !== id);
 
+      console.log(this.empleados)
+      return this.empleados;
+  }
 }
-
-

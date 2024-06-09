@@ -11,3 +11,4 @@ export interface Empleado {
     hora_salida: string;
     activo: boolean;
 }
+    
