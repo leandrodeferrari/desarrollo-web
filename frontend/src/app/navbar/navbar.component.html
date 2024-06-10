@@ -13,8 +13,32 @@
                     </li>
                 }
             </ul>
-            <button class="btn text-white border-white" style="--bs-border-opacity: .5;" type="submit" [routerLink]="['/login']">
-                Cerrar sesión</button>
+            <button 
+                class="btn text-white border-white" 
+                style="--bs-border-opacity: .5;" 
+                type="submit" 
+                data-bs-toggle="modal" 
+                data-bs-target="#cerrarSesion">
+                Cerrar sesión
+            </button>
         </div>
     </div>
 </nav>
+
+<div class="modal fade" id="cerrarSesion" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="modalLabel">¿Seguro desea cerrar sesión?</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">Su sesión se cerrará y perderá todos los datos que no haya guardado.</div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <button type="button" class="btn btn-danger" data-bs-dismiss="modal" (click)="logout()">
+                    Cerrar sesión
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

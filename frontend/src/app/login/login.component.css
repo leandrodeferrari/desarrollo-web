@@ -1,47 +1,65 @@
-.contenedor { /* Contenedor general.*/
-    display: flex; /* Permite que el contenedor se deforme y dos o más contenedores puedan ocupar la misma franja de píxeles.*/
-    height: 100vh; /* El contenedor toma la altura de la pantalla.*/
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: hidden; /* Evita el desplazamiento vertical */
 }
-  
-.contenedor-izquierdo { /* Contenedor del menú de login.*/
-    width: 33%; /* El contenedor toma un ancho equivalente a 33 % de la pantalla.*/
+
+.contenedor {
+    display: flex;
+    flex-wrap: wrap;
+    height: 100vh; /* El contenedor toma la altura de la pantalla */
 }
-  
-.contenedor-derecho { /* Contenedor del fondo de pantalla.*/
-    width: 67%; /* El contenedor toma un ancho equivalente a 67 % de la pantalla.*/
+
+.contenedor-izquierdo {
+    width: 33%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.contenedor-derecho {
+    width: 67%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
 }
 
 .fondo-login {
-    margin: 0; /* Quitar margen (relleno entre el contenedor <img> y el contenedor <div>).*/
-    padding: 0; /* Quitar relleno entre la imagen propiamente dicha y el contenedor <img>.*/
     width: 100%;
     height: 100%;
+    object-fit: cover;
 }
 
 .centrar {
-    text-align: center; /* Centra horizontalmente.*/
-    margin: auto; /* Centra verticalmente.*/
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
 }
 
 h2 {
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; /*Fuente de la letra.*/
-    font-weight: 600; /* Grosor de la negrita.*/
-    font-size: 32px; /* Tamaño de la letra.*/
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 32px;
 }
 
 a {
     color: #083977;
+    margin-top: 15px;
 }
 
 .centrar a:hover {
     color: blue;
-    cursor: pointer; /* Pone símbolo de mano apuntando.*/
+    cursor: pointer;
 }
 
 input {
-    width: 250px; /* Amcho de 250 píxeles.*/
-    height: 25px; /* Altura de 25 píxeles.*/
-    margin-bottom: 5px; /* Deja 5 píxeles de espacio entre cada <input>.*/
+    width: 250px;
+    margin-bottom: 5px;
 }
 
 input:hover {
@@ -50,16 +68,17 @@ input:hover {
 }
 
 #btnLogin {
-    width: 260px;
+    width: 250px;
     height: 33px;
     background-color: #1EB4E6;
     color: white;
+    margin-top: 15px;
 }
 
 #btnLogin:hover {
     border: 2px solid #00bfff;
-    transform: translateY(-2px); /* Desplaza el botón 2 píxeles hacia arriba.*/
-    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.5); /* Sombreado.*/
+    transform: translateY(-2px);
+    box-shadow: 0 4px 17px rgba(0, 0, 0, 0.5);
 }
 
 #btnPassword {
