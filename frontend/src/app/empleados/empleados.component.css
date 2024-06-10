@@ -63,3 +63,17 @@
     background-color: #1eb4e6;
     border: 0;
 }
+
+td, th {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+tr:hover td {
+    background-color: #1eb4e6;
+    color: rgb(0, 0, 0);
+}
+
+tr:hover th {
+    background-color: #1eb4e6;
+    color: rgb(0, 0, 0);
+}
