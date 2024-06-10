@@ -30,10 +30,13 @@
                     <div class="card-footer">
                         <div class="row">
                             <div class="col-6">
-                                <small class="text-body-secondary"><i class="bi bi-calendar2-week"></i> {{evento.fecha}}
-                                    ~ {{evento.horario}}</small>
+                                <small class="text-body-secondary">
+                                    <i class="bi bi-calendar2-week"></i> {{evento.fecha}}
+                                    <br>
+                                    <i class="bi bi-alarm"></i> {{evento.horario}}
+                                </small>
                             </div>
-                            <div class="col-6 text-end">
+                            <div class="col-6 text-end align-content-center">
                                 <i class="bi bi-geo-alt"></i> {{evento.ubicacion}}
                             </div>
                         </div>

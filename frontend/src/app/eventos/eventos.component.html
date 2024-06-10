@@ -51,10 +51,13 @@
                 <div class="card-footer">
                     <div class="row">
                         <div class="col-6">
-                            <small class="text-body-secondary"><i class="bi bi-calendar2-week"></i> {{evento.fecha}} ~
-                                {{evento.horario}}</small>
+                            <small class="text-body-secondary">
+                                <i class="bi bi-calendar2-week"></i> {{evento.fecha}}
+                                <br>
+                                <i class="bi bi-alarm"></i> {{evento.horario}}
+                            </small>
                         </div>
-                        <div class="col-6 text-end">
+                        <div class="col-6 text-end align-content-center">
                             <button type="button" [routerLink]="['/evento', evento.id]"
                                 class="btn btn-primary btn-sm bg-success border-0 me-2"><i
                                     class="bi bi-eye"></i></button>

@@ -56,7 +56,7 @@
 
                 <div class="mb-3">
                     <label for="fecha" class="form-label">Fecha</label>
-                    <input formControlName="fecha" type="date" class="form-control" id="fecha">
+                    <input formControlName="fecha" type="date" [min]="fechaActual" class="form-control" id="fecha">
                 </div>
 
                 @if (tieneErrores('fecha', 'required')) {

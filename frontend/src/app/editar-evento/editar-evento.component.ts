@@ -54,7 +54,7 @@ export class EditarEventoComponent {
 
                 let dia: string = fechaEnPartes[0];
                 let mes: string = fechaEnPartes[1];
-                let anio: string = `20${fechaEnPartes[2]}`;
+                let anio: string = `${fechaEnPartes[2]}`;
 
                 // Formato "YYYY-MM-DD" para que lo reconozca HTML.
                 let fechaConFormato: string = `${anio}-${mes}-${dia}`;
@@ -91,7 +91,7 @@ export class EditarEventoComponent {
 
             let dia: string = fecha.substring(8);
             let mes: string = fecha.substring(5, 7);
-            let anio: string = fecha.substring(2, 4);
+            let anio: string = fecha.substring(0, 4);
             let fechaConFormato: string = `${dia}/${mes}/${anio}`;
 
             let evento: Evento = {

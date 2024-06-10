@@ -19,8 +19,14 @@ export class CrearEventoComponent {
     private eventoService: EventoService = inject(EventoService);
     public formCrearEvento: FormGroup;
     public btn_atras: string = "< Ir atrás";
+    public fechaActual: string;
 
     constructor() {
+        const today = new Date();
+        // El método toISOString() me devuelve en este formato la fecha: 2024-06-09T19:58:23.568Z
+        // Al hacer el split, me devuelve el primer elemento: 2024-06-09
+        this.fechaActual = today.toISOString().split('T')[0];
+
         this.formCrearEvento = this.fb.group({
             titulo: ['', [Validators.required]],
             imagenUrl: ['', [Validators.required]],
@@ -52,7 +58,7 @@ export class CrearEventoComponent {
 
             let dia: string = fecha.substring(8);
             let mes: string = fecha.substring(5, 7);
-            let anio: string = fecha.substring(2, 4);
+            let anio: string = fecha.substring(0, 4);
             let fechaConFormato: string = `${dia}/${mes}/${anio}`;
 
             let evento: Evento = {
