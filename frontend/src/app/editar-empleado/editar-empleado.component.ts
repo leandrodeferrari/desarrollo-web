@@ -5,12 +5,12 @@ import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { EmpleadoService } from '../services/empleado.service';
 import { Empleado } from '../interfaces/empleado';
-import { TestComponent } from '../test/test.component';
+import { EmpleadosComponent } from '../empleados/empleados.component'
 
 @Component({
   selector: 'app-editar-empleado',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent,ReactiveFormsModule, RouterLink],
+  imports: [NavbarComponent, FooterComponent,ReactiveFormsModule, RouterLink, EmpleadosComponent],
   templateUrl: './editar-empleado.component.html',
   styleUrl: './editar-empleado.component.css'
 })

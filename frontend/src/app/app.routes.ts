@@ -5,10 +5,10 @@ import { EventosComponent } from './eventos/eventos.component';
 import { EditarEventoComponent } from './editar-evento/editar-evento.component';
 import { EventoComponent } from './evento/evento.component';
 import { CrearEventoComponent } from './crear-evento/crear-evento.component';
-import { TestComponent } from './test/test.component';
 import { AgregarEmpleadoComponent } from './agregar-empleado/agregar-empleado.component';
 import { EditarEmpleadoComponent } from './editar-empleado/editar-empleado.component';
 import { DetalleDeEmpleadoComponent } from './detalle-de-empleado/detalle-de-empleado.component';
+import { EmpleadosComponent } from './empleados/empleados.component';
 
 export const routes: Routes = [
     {path: 'login', component:LoginComponent},
@@ -17,7 +17,7 @@ export const routes: Routes = [
     {path: 'editar-evento/:id', component: EditarEventoComponent },
     {path: 'evento/:id', component: EventoComponent },
     {path: 'crear-evento', component: CrearEventoComponent },
-    {path: 'empleados', component: TestComponent },
+    {path: 'empleados', component: EmpleadosComponent },
     {path: 'editar-empleado/:id', component:EditarEmpleadoComponent },
     {path: 'agregar-empleado', component: AgregarEmpleadoComponent},
     {path: 'empleados/:id', component: DetalleDeEmpleadoComponent},
