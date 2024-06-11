@@ -7,7 +7,7 @@ export class AuthService {
   private listadoUsuarios = [
     { nombre: 'Juan', apellido: 'Centurión', email: 'centurion.juan@gmail.com', password: '12345678' },
     { nombre: 'Leandro', apellido: 'Deferrari', email: 'deferrari.leandro@gmail.com', password: '12345678' },
-    { nombre: 'Matias', apellido: 'Taretto', email: 'taretto.matias@gmail.com', password: '12345678' },
+    { nombre: 'Matias', apellido: 'Taretto', email: 'taretto.jose@gmail.com', password: '12345678' },
     { nombre: 'Marinela', apellido: 'Montilla', email: 'montilla.marinela@gmail.com',password: '12345678'}
   ];
 

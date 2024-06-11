@@ -30,8 +30,7 @@
     margin: auto; /* Centra verticalmente.*/
 }
 
-#btnAgregarEventos,
-#btnEventos,
+
 #btnEmpleados {
     width: 250px;
     height: 250px;
@@ -39,20 +38,9 @@
     box-shadow: 0 4px 17px rgba(0, 0, 0, 0.5); /* Sombreado.*/
 }
 
-#btnAgregarEventos:hover,
-#btnEventos:hover,
+
 #btnEmpleados:hover {
     color: #1EB4E6;
-}
-
-#btnLogout {
-    background-color: rgb(230, 40, 40); 
-    border-color: rgb(230, 40, 40);
-}
-
-#btnLogout:hover {
-    background-color: red;
-    border-color: red;
 }
 
 .bg-navbar {
@@ -62,4 +50,26 @@
 .btn-bg-hover:hover {
     background-color: #1eb4e6;
     border: 0;
+}
+
+td, th {
+    transition: background-color 0.25s ease, color 0.25s ease;
+}
+
+tr:hover td {
+    background-color: #1eb4e6;
+    color: rgb(0, 0, 0);
+}
+
+tr:hover th {
+    background-color: #1eb4e6;
+    color: rgb(0, 0, 0);
+}
+-----
+.btn {
+    transition: transform 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.95);
 }

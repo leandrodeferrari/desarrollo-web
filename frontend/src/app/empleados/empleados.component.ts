@@ -28,7 +28,10 @@ export class EmpleadosComponent {
     this.empleados = this.empleadoService.obtenerTodosLosEmpleados();
  }
  borrar(id: number): void {
-    this.empleados = this.empleadoService.eliminarEmpleado(id);
-  }
 
+    if (confirm("¿Estás seguro de que quieres eliminar este empleado?")){
+      this.empleados = this.empleadoService.eliminarEmpleado(id);
+    }
+
+  }
 }
