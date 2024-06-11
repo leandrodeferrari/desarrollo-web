@@ -4,13 +4,6 @@ import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '../services/auth.service';
 import { Color } from 'colors';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatIconModule } from '@angular/material/icon';
-import { MatSnackBarModule } from '@angular/material/snack-bar';
-import { SnackBarService } from '../services/snackbar.service';
 
 @Component({
   selector: 'app-login',
@@ -18,13 +11,7 @@ import { SnackBarService } from '../services/snackbar.service';
   imports: [ 
     RouterModule,
     FormsModule,
-    ReactiveFormsModule,
-    MatFormFieldModule,
-    MatInputModule,
-    MatButtonModule,
-    MatDividerModule,
-    MatIconModule,
-    MatSnackBarModule
+    ReactiveFormsModule 
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -33,10 +20,10 @@ export class LoginComponent {
   private authService : AuthService = inject(AuthService)
   private router : Router = inject(Router);
   private formulario : FormBuilder = inject(FormBuilder);
-  private snackBarService: SnackBarService = inject(SnackBarService);
   protected formLogin : FormGroup;
   ocultarPassword : boolean = true;
-  mensajeLogin: string = "";
+  auth? : boolean;
+  usuarioLogin?: any;
 
   /**
    * 
@@ -65,17 +52,15 @@ export class LoginComponent {
       }
 
       const resultado = this.authService.login(usuario);
-      console.log("Email usuario: ",resultado?.email);
-      console.log("Password: ",resultado?.password);
-
+      console.log('Usuario:\n\n'.bgGreen+resultado);
       if (resultado) {
-        this.mensajeLogin = `¡Bienvenido ${resultado.nombre} ${resultado.apellido}!`;
+        this.auth = true;
+        this.usuarioLogin = resultado;
         setTimeout(() => {
-          this.snackBarService.mensaje(this.mensajeLogin, {duracion: 5000, tipoPanel: ['snack-bar-accent']}, 'Cerrar');
           this.router.navigate(['/home']);
-        }, 0);
+        }, 3000);
       } else {
-        this.snackBarService.mensaje('Inicio de sesión fallida', {duracion: 7000, tipoPanel: ['snack-bar-error']}, 'Cerrar');
+        this.auth = false;
       }
     }
   }
