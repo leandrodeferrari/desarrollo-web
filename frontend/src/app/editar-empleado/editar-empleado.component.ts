@@ -61,30 +61,24 @@ export class EditarEmpleadoComponent {
               this.empleado = empleadoFiltrado;
               this.id = id;
 
-              let fechaEnPartes: string[] = empleadoFiltrado.fecha_nacimiento.split('/');
-
-              let dia: string = fechaEnPartes[0];
-              let mes: string = fechaEnPartes[1];
-              let anio: string = `${fechaEnPartes[2]}`;
-
-              // Formato "YYYY-MM-DD" para que lo reconozca HTML.
-              let fechaConFormato: string = `${anio}-${mes}-${dia}`;
+    
 
               this.empleadoEditado.get('nombre')?.setValue(empleadoFiltrado.nombre);
               this.empleadoEditado.get('apellido')?.setValue(empleadoFiltrado.apellido);
               this.empleadoEditado.get('documento')?.setValue(empleadoFiltrado.documento);
-              this.empleadoEditado.get('fecha_nacimiento')?.setValue(fechaConFormato);
+              this.empleadoEditado.get('fecha_nacimiento')?.setValue(empleadoFiltrado.fecha_nacimiento);
               this.empleadoEditado.get('categoria')?.setValue(empleadoFiltrado.categoria);
               this.empleadoEditado.get('email')?.setValue(empleadoFiltrado.email);
               this.empleadoEditado.get('modalidad_trabajo')?.setValue(empleadoFiltrado.modalidad_trabajo);
               this.empleadoEditado.get('hora_entrada')?.setValue(empleadoFiltrado.hora_entrada);
               this.empleadoEditado.get('hora_salida')?.setValue(empleadoFiltrado.hora_salida);
+              console.log(empleadoFiltrado)
           }
       });
-
+     
       this.filtrarCategorias();
     }
-
+    
     filtrarCategorias(): void {
       this.categoriasFiltradas = this.categorias.filter(categoria => categoria !== this.empleado?.categoria);
     }
@@ -103,17 +97,12 @@ export class EditarEmpleadoComponent {
           let hora_entrada: string = this.empleadoEditado.value.hora_entrada as string;
           let hora_salida: string = this.empleadoEditado.value.hora_salida as string
 
-          let dia: string = fecha_nacimiento.substring(8);
-          let mes: string = fecha_nacimiento.substring(5, 7);
-          let anio: string = fecha_nacimiento.substring(2, 4);
-          let fechaConFormato: string = `${dia}/${mes}/${anio}`;
-
           let empleado: Empleado = {
               id: this.id,
               nombre: nombre,
               apellido: apellido,
               documento: documento,
-              fecha_nacimiento: fechaConFormato,
+              fecha_nacimiento: fecha_nacimiento,
               categoria: categoria,
               email: email,
               modalidad_trabajo: modalidad_trabajo,
