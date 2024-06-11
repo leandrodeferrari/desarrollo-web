@@ -4,11 +4,12 @@ import { ActivatedRoute, RouterLink } from '@angular/router';
 import { Empleado } from '../interfaces/empleado';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { FooterComponent } from '../footer/footer.component';
+import { EventoComponent } from '../evento/evento.component';
 
 @Component({
   selector: 'app-detalle-de-empleado',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent, RouterLink],
+  imports: [NavbarComponent, FooterComponent, RouterLink, EventoComponent],
   templateUrl: './detalle-de-empleado.component.html',
   styleUrl: './detalle-de-empleado.component.css'
 })

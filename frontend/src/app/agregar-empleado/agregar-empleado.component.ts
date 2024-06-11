@@ -61,7 +61,7 @@ export class AgregarEmpleadoComponent{
             modalidad_trabajo: modalidad_trabajo,
             hora_entrada: hora_entrada,
             hora_salida: hora_salida,
-            activo:  true
+            activo: true
           }
 
         this.empleadoService.agregarNuevoEmpleado(empleado);

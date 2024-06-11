@@ -7,6 +7,7 @@ import { EmpleadoService } from '../services/empleado.service';
 import { Empleado } from '../interfaces/empleado';
 import { EmpleadosComponent } from '../empleados/empleados.component'
 
+
 @Component({
   selector: 'app-editar-empleado',
   standalone: true,
@@ -57,12 +58,10 @@ export class EditarEmpleadoComponent {
           const id: number = param['id'];
           let empleadoFiltrado: Empleado = this.empleadoService.obtenerEmpleadosPorId(id);
 
-          if (empleadoFiltrado) {
+          if (empleadoFiltrado) 
+            {
               this.empleado = empleadoFiltrado;
               this.id = id;
-
-    
-
               this.empleadoEditado.get('nombre')?.setValue(empleadoFiltrado.nombre);
               this.empleadoEditado.get('apellido')?.setValue(empleadoFiltrado.apellido);
               this.empleadoEditado.get('documento')?.setValue(empleadoFiltrado.documento);
@@ -72,8 +71,7 @@ export class EditarEmpleadoComponent {
               this.empleadoEditado.get('modalidad_trabajo')?.setValue(empleadoFiltrado.modalidad_trabajo);
               this.empleadoEditado.get('hora_entrada')?.setValue(empleadoFiltrado.hora_entrada);
               this.empleadoEditado.get('hora_salida')?.setValue(empleadoFiltrado.hora_salida);
-              console.log(empleadoFiltrado)
-          }
+            }
       });
      
       this.filtrarCategorias();
@@ -92,7 +90,7 @@ export class EditarEmpleadoComponent {
           let documento: string = this.empleadoEditado.value.documento as string;
           let fecha_nacimiento: string = this.empleadoEditado.value.fecha_nacimiento as string;
           let categoria: string = this.empleadoEditado.value.categoria as string;
-          let email: string = this.empleadoEditado.value.ubicacion as string;
+          let email: string = this.empleadoEditado.value.email as string;
           let modalidad_trabajo: string = this.empleadoEditado.value.modalidad_trabajo as string;
           let hora_entrada: string = this.empleadoEditado.value.hora_entrada as string;
           let hora_salida: string = this.empleadoEditado.value.hora_salida as string
