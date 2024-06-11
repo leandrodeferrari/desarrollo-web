@@ -1,16 +1,20 @@
 <app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}]"></app-navbar>
 
 <div class="container-fluid">
+
+    <!-- Breadcrumbs -->
     <div class="row mt-4">
         <div class="col-6 col-md-3">Home | Eventos</div>
     </div>
 
+    <!-- Titulo -->
     <div class="row">
         <div class="col-12 text-center">
             <h1>Eventos</h1>
         </div>
     </div>
 
+    <!-- Buscador -->
     <div class="row mt-4">
         <div class="col-6 align-content-center">
             <div class="input-group">
@@ -20,10 +24,14 @@
                         class="bi bi-search"></i></button>
             </div>
         </div>
+
+        <!-- Boton de filtrado -->
         <div class="col-2 align-content-center text-start">
             <button type="button" class="btn btn-primary btn-sm bg-eventos border-0"><i
                     class="bi bi-funnel-fill"></i></button>
         </div>
+
+        <!-- Boton para crear evento -->
         <div class="col-4 align-content-center text-end">
             <button type="button" [routerLink]="['/crear-evento']" class="btn btn-primary btn-sm bg-eventos border-0"><i
                     class="bi bi-plus-circle"></i>
@@ -31,6 +39,7 @@
         </div>
     </div>
 
+    <!-- Mensaje que aparece si no hay eventos -->
     @if (eventos.length === 0) {
     <div class="row mt-4">
         <div class="col-12 text-center">
@@ -41,15 +50,21 @@
 
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
 
+        <!-- Cards de Eventos -->
         @for (evento of eventos; track evento.id) {
-        <div  class="col">
+        <div class="col">
             <div class="card">
+                <!-- Imagen del evento -->
                 <img [src]="evento.imagenUrl" class="card-img-top" alt="Imagen del evento">
+
+                <!-- Titulo del evento -->
                 <div class="card-body">
                     <h5 class="card-title">{{evento.titulo}}</h5>
                 </div>
+                
                 <div class="card-footer">
                     <div class="row">
+                        <!-- Fecha y Hoarario del evento -->
                         <div class="col-6">
                             <small class="text-body-secondary">
                                 <i class="bi bi-calendar2-week"></i> {{evento.fecha}}
@@ -57,8 +72,10 @@
                                 <i class="bi bi-alarm"></i> {{evento.horario}}
                             </small>
                         </div>
+
+                        <!-- Botones para realizar acciones:  Ver, Modificar y Borrar -->
                         <div class="col-6 text-end align-content-center">
-                            <button type="button" [routerLink]="['/evento', evento.id]"
+                            <button type="button" [routerLink]="['/eventos', evento.id]"
                                 class="btn btn-primary btn-sm bg-success border-0 me-2"><i
                                     class="bi bi-eye"></i></button>
                             <button type="button" [routerLink]="['/editar-evento', evento.id]"
@@ -72,7 +89,6 @@
             </div>
         </div>
         }
-
     </div>
 </div>
 

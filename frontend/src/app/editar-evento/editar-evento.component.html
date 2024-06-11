@@ -1,7 +1,8 @@
-<app-navbar
-    [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
+<app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
 
 <div class="container-fluid">
+
+    <!-- Breadcrumbs -->
     <div class="row mt-4">
         <div class="col">Home | Eventos | Modificar Evento</div>
     </div>
@@ -11,15 +12,19 @@
         <button type="button" [routerLink]="['/eventos']" class="btn btn-secondary btn-sm"> {{btn_atras}} </button>
     </div>
 
+    <!-- Título del formulario -->
     <div class="row mt-4">
         <div class="col-12 text-center">
             <h1>Modificar evento</h1>
         </div>
     </div>
 
+    <!-- Formulario para modificar un evento -->
     <div class="row justify-content-center">
         <div class="col-10 col-md-8">
             <form [formGroup]="formEditarEvento" (ngSubmit)="editar($event)" class="mt-4">
+
+                <!-- Campo Titulo -->
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
                     <input formControlName="titulo" [value]="evento?.titulo" type="text" class="form-control"
@@ -32,6 +37,7 @@
                 </div>
                 }
 
+                <!-- Campo Imagen URL -->
                 <div class="mb-3">
                     <label for="imagenUrl" class="form-label">Imagen URL</label>
                     <input formControlName="imagenUrl" type="url" class="form-control" id="imagenUrl">
@@ -43,6 +49,7 @@
                 </div>
                 }
 
+                <!-- Campo Descripcion -->
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
                     <textarea formControlName="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
@@ -54,6 +61,7 @@
                 </div>
                 }
 
+                <!-- Campo Fecha -->
                 <div class="mb-3">
                     <label for="fecha" class="form-label">Fecha</label>
                     <input formControlName="fecha" type="date" class="form-control" id="fecha">
@@ -65,6 +73,7 @@
                 </div>
                 }
 
+                <!-- Campo Horario -->
                 <div class="mb-3">
                     <label for="horario" class="form-label">Horario</label>
                     <input formControlName="horario" [value]="evento?.horario" type="text" class="form-control"
@@ -77,6 +86,7 @@
                 </div>
                 }
 
+                <!-- Campo Ubicacion -->
                 <div class="mb-3">
                     <label for="ubicacion" class="form-label">Ubicación</label>
                     <input formControlName="ubicacion" type="text" class="form-control" id="ubicacion"
@@ -89,6 +99,7 @@
                 </div>
                 }
 
+                <!-- Botones de cancelar y aceptar -->
                 <div class="row">
                     <div class="text-center mt-3 col-6">
                         <div class="d-grid gap-2">

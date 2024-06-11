@@ -1,6 +1,8 @@
 <app-navbar [links]="[{ruta: 'home', texto: 'Home'}, {ruta: 'empleados', texto: 'Empleados'}, {ruta: 'eventos', texto: 'Eventos'}]"></app-navbar>
 
 <div class="container-fluid">
+
+    <!-- Breadcrumbs -->
     <div class="row mt-4">
         <div class="col">Home | Eventos | Crear Evento</div>
     </div>
@@ -10,15 +12,19 @@
         <button type="button" [routerLink]="['/eventos']" class="btn btn-secondary btn-sm"> {{btn_atras}} </button>
     </div>
 
+    <!-- Título del formulario -->
     <div class="row mt-4">
         <div class="col-12 text-center">
             <h1>Crear evento</h1>
         </div>
     </div>
 
+    <!-- Formulario para crear un evento -->
     <div class="row justify-content-center">
         <div class="col-10 col-md-8">
             <form [formGroup]="formCrearEvento" (ngSubmit)="crear($event)" class="mt-4">
+
+                <!-- Campo Titulo -->
                 <div class="mb-3">
                     <label for="titulo" class="form-label">Título</label>
                     <input formControlName="titulo" type="text" class="form-control" id="titulo"
@@ -31,6 +37,7 @@
                 </div>
                 }
 
+                <!-- Campo Imagen URL -->
                 <div class="mb-3">
                     <label for="imagenUrl" class="form-label">Imagen URL</label>
                     <input formControlName="imagenUrl" type="url" class="form-control" id="imagenUrl">
@@ -42,6 +49,7 @@
                 </div>
                 }
 
+                <!-- Campo Descripcion -->
                 <div class="mb-3">
                     <label for="descripcion" class="form-label">Descripción</label>
                     <textarea formControlName="descripcion" class="form-control" id="descripcion" rows="3"></textarea>
@@ -53,6 +61,7 @@
                 </div>
                 }
 
+                <!-- Campo Fecha -->
                 <div class="mb-3">
                     <label for="fecha" class="form-label">Fecha</label>
                     <input formControlName="fecha" type="date" [min]="fechaActual" class="form-control" id="fecha">
@@ -64,6 +73,7 @@
                 </div>
                 }
 
+                <!-- Campo Horario Desde y Hasta -->
                 <label for="horario" class="form-label">Horario</label>
                 <div class="input-group mb-3">
                     <input formControlName="horarioDesde" type="time" class="form-control" placeholder="Desde"
@@ -84,6 +94,7 @@
                 </div>
                 }
 
+                <!-- Campo Ubicacion -->
                 <div class="mb-3">
                     <label for="ubicacion" class="form-label">Ubicación</label>
                     <input formControlName="ubicacion" type="text" class="form-control" id="ubicacion"

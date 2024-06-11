@@ -15,7 +15,7 @@ export const routes: Routes = [
     {path: 'home', component: HomeComponent },
     {path: 'eventos', component: EventosComponent },
     {path: 'editar-evento/:id', component: EditarEventoComponent },
-    {path: 'evento/:id', component: EventoComponent },
+    {path: 'eventos/:id', component: EventoComponent },
     {path: 'crear-evento', component: CrearEventoComponent },
     {path: 'empleados', component: EmpleadosComponent },
     {path: 'editar-empleado/:id', component:EditarEmpleadoComponent },
