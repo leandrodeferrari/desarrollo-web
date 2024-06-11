@@ -10,10 +10,10 @@ export class SnackBarService {
 
   constructor() { }
 
-  openTop(message: string, config: SnackBarConfig, action?: string){
-    this.snackBar.open(message, action, {
-      duration: config.duration,
-      panelClass: config.panelClass,
+  mensaje(texto: string, configuracion: SnackBarConfig, accion?: string) {
+    this.snackBar.open(texto, accion, {
+      duration: configuracion.duracion,
+      panelClass: configuracion.tipoPanel,
       verticalPosition: 'top'
     });
   }

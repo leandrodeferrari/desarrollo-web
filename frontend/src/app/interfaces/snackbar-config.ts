@@ -1,4 +1,4 @@
 export interface SnackBarConfig {
-    duration: number,
-    panelClass: string[]
+    duracion: number,
+    tipoPanel: string[]
 }

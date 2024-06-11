@@ -2,13 +2,13 @@ html, body {
     margin: 0;
     padding: 0;
     height: 100%;
-    overflow: hidden; /* Evita el desplazamiento vertical */
+    overflow: hidden; /* Evita el desplazamiento vertical.*/
 }
 
 .contenedor {
     display: flex;
     flex-wrap: wrap;
-    height: 100vh; /* El contenedor toma la altura de la pantalla */
+    height: 100vh; /* El contenedor toma la altura de la pantalla.*/
 }
 
 .contenedor-izquierdo {
