@@ -1,3 +1,12 @@
 .bg-button {
     background-color: #1eb4e6;
 }
+
+.bg-button:hover {
+    background-color: #1b85a9;
+    border: 0;
+}
+
+.btn {
+    transition: transform 0.2s ease;
+}

@@ -6,3 +6,11 @@
     background-color: #1eb4e6;
     border: 0;
 }
+
+.btn {
+    transition: transform 0.2s ease;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
