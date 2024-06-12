@@ -2,7 +2,7 @@
     <div class="contenedor-izquierdo centrar flex-grow-1 col-12 col-md-4">
 
         <h2 style="margin-bottom: 30px;">Log In</h2>
-
+        
         <form [formGroup]="formLogin">
             <div>
                 <input type="text" formControlName="email" class="form-control" placeholder="Email" title="Ej.: tunombre@ejemplo.com">
@@ -14,7 +14,7 @@
             <div style="width: 250px; display: flex; align-items: center;">
                 <input [type]="ocultarPassword ? 'password' : 'text'" formControlName="password" placeholder="Contraseña"
                 class="form-control" style="width: 225px;" title="Mínimo 8 carácteres. Máximo 50.">
-                <button id="btnPassword" type="button" (click)="cambiarVisibilidad($event)" class="centrar">
+                <button id="btnPassword" type="button" (click)="cambiarVisibilidad()" class="centrar">
                     <i [class]="ocultarPassword? 'bi bi-eye-fill' : 'bi bi-eye-slash-fill'" 
                         [title]="ocultarPassword? 'Ver la contraseña.' : 'Ocultar la contraseña.'">
                     </i>
@@ -25,10 +25,14 @@
                 <div style="color: red; display: flex;">{{ darMensajeError('password') }}</div>
             }
             
-            <button id="btnLogin" (click)="login($event)" [disabled]="formLogin.invalid"
+            <button id="btnLogin" (click)="login()" [disabled]="formLogin.invalid"
                 class="btn btn-primary bg-button border-0">
                 Login                 
             </button>
+            
+            <div class="alert alert-danger mt-2 text-center" role="alert" [style]="falloLogin? 'display:block':'display:none'">
+                Usuario incorrecto.
+            </div>
         </form><br><br>
 
         <a data-bs-toggle="modal" data-bs-target="#noProgramado">

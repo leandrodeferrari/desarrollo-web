@@ -11,7 +11,7 @@ import { Color } from 'colors';
   imports: [ 
     RouterModule,
     FormsModule,
-    ReactiveFormsModule 
+    ReactiveFormsModule
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
@@ -22,64 +22,62 @@ export class LoginComponent {
   private formulario : FormBuilder = inject(FormBuilder);
   protected formLogin : FormGroup;
   ocultarPassword : boolean = true;
-  auth? : boolean;
-  usuarioLogin?: any;
+  mensajeLogin: string = "";
+  falloLogin: boolean = false;
 
-  /**
-   * 
-   */
   constructor() {
     this.formLogin = this.formulario.group({
       email: ['', [Validators.required, Validators.email]], //Valida el formato de correo electrónico.
       password: ['', [Validators.required, Validators.minLength(8), Validators.maxLength(50)]], //Valida que el campo tenga mínimo 8 caracteres y máximo 50.
     });
   }
-
+  
   /**
-   * 
-   * @param event 
+   * Autentifica el usuario y permite el acceso al resto de la aplicación.
    */
-  login(event: Event) {
-    event.preventDefault();
-
-    if(this.formLogin.valid) {
-      let email = this.formLogin.value.email as string;
-      let password = this.formLogin.value.password as string;
-
-      let usuario = {
-        email: email,
-        password: password
-      }
-
-      const resultado = this.authService.login(usuario);
-      console.log('Usuario:\n\n'.bgGreen+resultado);
-      if (resultado) {
-        this.auth = true;
-        this.usuarioLogin = resultado;
-        setTimeout(() => {
-          this.router.navigate(['/home']);
-        }, 3000);
-      } else {
-        this.auth = false;
+  login() {
+    try {
+      if(this.formLogin.valid) {
+        let email = this.formLogin.value.email as string;
+        let password = this.formLogin.value.password as string;
+  
+        let usuario = {
+          email: email,
+          password: password
+        }
+  
+        const resultado = this.authService.login(usuario);
+        console.log("Email usuario: ",resultado?.email.green);
+        console.log("Password: ",resultado?.password.green);
+  
+        if (resultado) {
+          setTimeout(() => {
+            this.router.navigate(['/home']);
+          }, 3000);
+        } else {
+          this.falloLogin=true;
+          console.log("Usuario no registrado.".bgRed);
+        }
       }
     }
+    catch (err) {
+      console.log("Error en login.component.ts (login): ",err);
+    }
   }
-
+  
   /**
-   * 
-   * @param event 
+   * Cambia el icono del botón contraseña.
    */
-  cambiarVisibilidad(event: MouseEvent) {
+  cambiarVisibilidad() {
     this.ocultarPassword = !this.ocultarPassword;
-    event.stopPropagation();
   }
 
   /**
    * 
-   * @param campo 
-   * @returns 
+   * @param campo : campos requeridos del formulario.
+   * @returns : devuelve un string.
    */
-  darMensajeError(campo: string) {
+  darMensajeError(campo: string):string {
     if (this.formLogin.get(campo)?.hasError('required')) 
       { return '*Este campo es obligatorio.'; } 
     else if (this.formLogin.get(campo)?.hasError('email')) 
