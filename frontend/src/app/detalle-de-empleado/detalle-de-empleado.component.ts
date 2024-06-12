@@ -25,7 +25,11 @@ export class DetalleDeEmpleadoComponent implements OnInit {
   btn_atras: string ="< Ir atrás";
   
 
-
+ /**
+    * A través del parámetro de la URL obtiene el id del empleado y busca la información del empleado con el método del servicio. Si se encuentra el empleado, se asigna a la propiedad empleado.
+    *
+    * @return {void}
+    */
   ngOnInit(): void {
 
     this._route.params.subscribe(param => {

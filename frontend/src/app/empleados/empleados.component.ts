@@ -27,6 +27,9 @@ export class EmpleadosComponent {
   constructor() {
     this.empleados = this.empleadoService.obtenerTodosLosEmpleados();
  }
+ /**
+  * Confirma la acción de eliminar un empleado. En caso de que la acción sea requerida, se llama al método eliminarEmpleado, el cual recibe el id del empleado en cuestión, para eliminarlo del array empleados
+  */
  borrar(id: number): void {
 
     if (confirm("¿Estás seguro de que quieres eliminar este empleado?")){

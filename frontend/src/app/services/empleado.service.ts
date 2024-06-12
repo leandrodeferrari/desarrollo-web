@@ -67,22 +67,30 @@ export class EmpleadoService {
       }
     ];
   }
+
   /**
-   * @param obtenerTodosLosEmpleados Es un método que permite traer todos los registros de los empleados que se encuentran en la BBDD, aunque por ahora al no existir la mismo oficialmente, dichos datos se traen desde el array "empleados" que se encuentra en el servicio.
+   * Es un método que permite traer todos los registros de los empleados que se encuentran en la BBDD, aunque por ahora al no existir oficialmente una BBDD, dichos datos se traen desde el array "empleados" que se encuentra en el servicio.
    */
   obtenerTodosLosEmpleados(): Empleado[]{
     return this.empleados;
   }
 
   /**
-   * @param btenerEmpleadosPorId Es un método que permite buscar un registro cuando recibe por parámetro un id. Además en caso de que no existe ningún registro que coincida con el id que se pasó por el paramámetro, el mismo devuelve un registro vacío a través del método obtenerEmpleadovacío. 
+   *  Es un método que permite buscar un registro cuando recibe por parámetro un id. Además en caso de que no exista ningún registro que coincida con el id que se pasó por el paramámetro, el mismo devuelve un registro vacío a través del método obtenerEmpleadovacío. 
+   * @param {number} id - Recibe como parámetro un id
+   * @returns {Empleado} - Retorna el empleado cuyo id coincida con el id que se le pasó por parámetro o un empleado con valores por defecto en la propiedades.
+   * 
    */
   
   obtenerEmpleadosPorId(id: number): Empleado {
     const empleado = this.empleados.find(empleado => empleado.id == id);
     return empleado ? empleado : this.obtenerEmpleadoVacio();
   }
-
+  /**
+  * Obtiene un empleado con valores por defecto en las propiedades.
+  *
+  * @return {Empleado} Retorna un empleado con valores por defecto en las propiedades.
+  */
   obtenerEmpleadoVacio(): Empleado {
     return {
       id: 0,
@@ -100,7 +108,9 @@ export class EmpleadoService {
   }
 
   /**
-   * @param btenerEmpleadosPorId Es un método que permite agregar un registro cuando recibe por parámetro objeto de tipo Empleado. 
+   * Es un método que permite agregar un registro cuando recibe por parámetro un objeto de tipo Empleado. 
+   * @param {Empleado} empleado - Recibe por parámetro un empleado que se agregará en el array empleados.
+   * @returns {Empleado} - Retorna el empleado creado
    */
 
   agregarNuevoEmpleado(empleado: Empleado){
@@ -124,8 +134,10 @@ export class EmpleadoService {
 
     return nuevoEmpleado;
   }
+
   /**
-   * @param btenerEmpleadosPorId Es un método que permite agregar un registro cuando recibe por parámetro objeto de tipo Empleado y luego recorre el array de empleados para encontrar el id del empleado que coincida con el id del empleado que se le pasa por parametro al método. 
+   * Es un método que permite modificar un empleado cuando recibe por parámetro un objeto de tipo Empleado. Luego recorre el array de empleados para encontrar el id del empleado que coincida con el id del empleado que se le pasa por parametro al método y le asigna los nuevos valores. 
+   * @param {Empleado} empleadomodificado Recibe el empleado con los datos modificados.
    */
   editarEmpleado(empleadomodificado: Empleado): void {
     
@@ -145,6 +157,11 @@ export class EmpleadoService {
     });
   }
 
+   /**
+  * Elimina un empleado del array empleados que coincida con el id que se le pasó por parámetro.
+  * @param {number} id Es el id del empleado que se quiere eliminar.
+  * 
+  */
   eliminarEmpleado(id: number): Empleado[] {
       this.empleados = this.empleados.filter(empleado => empleado.id !== id);
 

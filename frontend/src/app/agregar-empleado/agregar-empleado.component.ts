@@ -36,6 +36,14 @@ export class AgregarEmpleadoComponent{
     })
   }
 
+  
+    /**
+    * Crea un nuevo empleado y redirige a la página de empleados si el formulario es válido.
+    *
+    * @param {Event} event - El objeto del tipo Event que activó el método.
+    * @return {void}
+    */
+
   crear(event: Event): void {
     event.preventDefault();
 
@@ -69,7 +77,14 @@ export class AgregarEmpleadoComponent{
       }
  }
 
- //Método general para el manejo de validaciones
+   /**
+    * Comprueba si un control dado del formulario tiene un error específico y ha sido tocado.
+    *
+    * @param {string} control - El nombre del control a comprobar.
+    * @param {string} error - El nombre del error a comprobar.
+    * @return {boolean} Devuelve true si el control tiene el error especificado y ha sido tocado, sino false.
+    */
+   
   tieneErrores(control: string, error: string): boolean {
     return this.nuevoEmpleado.get(control)?.hasError(error) && this.nuevoEmpleado.get(control)?.touched || false;
   } 

@@ -53,6 +53,11 @@ export class EditarEmpleadoComponent {
     })
     }
 
+      /**
+    * Recupera los datos de un empleado a partir de los parámetros de la ruta. Si se encuentra el empleado, establece las propiedades del componente y rellena los campos del formulario con los datos del empleado.
+    *
+    * @return {void}
+    */
     ngOnInit(): void {
       this.route.params.subscribe(param => {
           const id: number = param['id'];
@@ -77,9 +82,22 @@ export class EditarEmpleadoComponent {
       this.filtrarCategorias();
     }
     
+    /**
+     * Filtra la lista de categorías, eliminando la categoría que coincide con la categoría del empleado (this.empleado?.categoria) y guarda el resultado en categoriasFiltradas.
+     */
+
     filtrarCategorias(): void {
       this.categoriasFiltradas = this.categorias.filter(categoria => categoria !== this.empleado?.categoria);
     }
+
+      /**
+    * Edita un empleado actualizando sus propiedades con los valores del formulario y navegando la página de empleados si el formulario es válido.
+    *
+    * @param {Event} event - El evento que contiene los valores de las propiedades que queremos 
+    * actualizar.
+    * 
+    * @return {void}
+    */
     
     editarEmpleado(event: Event): void {
       event.preventDefault();
@@ -115,6 +133,13 @@ export class EditarEmpleadoComponent {
       }
   }
 
+    /**
+    * Comprueba si un control dado del formulario tiene un error específico y ha sido tocado.
+    *
+    * @param {string} control - El nombre del control a comprobar.
+    * @param {string} error - El nombre del error a comprobar.
+    * @return {boolean} Devuelve true si el control tiene el error especificado y ha sido tocado, sino false.
+    */
   tieneErrores(control: string, error: string): boolean {
     return this.empleadoEditado.get(control)?.hasError(error) && this.empleadoEditado.get(control)?.touched || false;
   } 

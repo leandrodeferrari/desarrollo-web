@@ -14,9 +14,9 @@ export class AuthService {
   constructor() { }
 
   /**
+   * Este méstodo se utiliza para validar el email y contraseña que ingresa el usuario con el fin de permitir el inicio de sesión en la app.
+   * @param {Any} usuario Recibe como parámetro el usuario 
    * 
-   * @param usuario 
-   * @returns 
    */
   login(usuario:any) {
     const login = this.listadoUsuarios.find(
