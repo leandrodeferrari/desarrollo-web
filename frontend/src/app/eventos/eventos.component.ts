@@ -22,16 +22,36 @@ export class EventosComponent implements OnInit {
   * @return {void}
   */
   ngOnInit(): void {
-    this.eventos = this.eventoService.obtenerTodos();
+    this.eventoService.obtenerTodos().subscribe({
+      next: response => {
+        this.eventos = response;
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 
   /**
-  * Elimina un evento de la lista de eventos, a traves de su ID, y actualiza el array de todos los eventos.
+  * Elimina un evento, a traves de su ID, y actualiza la propiedad eventos.
   *
-  * @param {number} id - El ID del evento que deseamos eliminar.
+  * @param {string} id - El ID del evento que deseamos eliminar.
   * @return {void}
   */
-  borrar(id: number): void {
-    this.eventos = this.eventoService.borrar(id);
+  borrar(id: string): void {
+    this.eventoService.borrar(id).subscribe({
+      next: response => {
+        if (response.mensaje === "El evento fue eliminado correctamente.") {
+          this.eventoService.obtenerTodos().subscribe({
+            next: response => {
+              this.eventos = response;
+            }
+          });
+        }
+      },
+      error: error => {
+        console.log(error);
+      }
+    });
   }
 }

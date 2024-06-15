@@ -18,7 +18,7 @@ export class EditarEventoComponent {
     private fb: FormBuilder = inject(FormBuilder);
     private eventoService: EventoService = inject(EventoService);
     private router: Router = inject(Router);
-    private id: number = 0;
+    private id: string = "";
     public btn_atras: string = "< Ir atrás";
     public formEditarEvento: FormGroup;
     public evento?: Evento;
@@ -43,29 +43,31 @@ export class EditarEventoComponent {
     */
     ngOnInit(): void {
         this.route.params.subscribe(param => {
-            const id: number = param['id'];
-            let eventoEncontrado: Evento = this.eventoService.obtenerPorId(id);
+            const id: string = param['id'];
+            this.eventoService.obtenerPorId(id).subscribe({
+                next: response => {
+                    if (response) {
+                        this.evento = response;
+                        this.id = id;
 
-            if (eventoEncontrado) {
-                this.evento = eventoEncontrado;
-                this.id = id;
+                        let fechaEnPartes: string[] = response.fecha.split('/');
 
-                let fechaEnPartes: string[] = eventoEncontrado.fecha.split('/');
+                        let dia: string = fechaEnPartes[0];
+                        let mes: string = fechaEnPartes[1];
+                        let anio: string = `${fechaEnPartes[2]}`;
 
-                let dia: string = fechaEnPartes[0];
-                let mes: string = fechaEnPartes[1];
-                let anio: string = `${fechaEnPartes[2]}`;
+                        // Formato "YYYY-MM-DD" para que lo reconozca HTML.
+                        let fechaConFormato: string = `${anio}-${mes}-${dia}`;
 
-                // Formato "YYYY-MM-DD" para que lo reconozca HTML.
-                let fechaConFormato: string = `${anio}-${mes}-${dia}`;
-
-                this.formEditarEvento.get('titulo')?.setValue(eventoEncontrado.titulo);
-                this.formEditarEvento.get('imagenUrl')?.setValue(eventoEncontrado.imagenUrl);
-                this.formEditarEvento.get('descripcion')?.setValue(eventoEncontrado.descripcion);
-                this.formEditarEvento.get('fecha')?.setValue(fechaConFormato);
-                this.formEditarEvento.get('horario')?.setValue(eventoEncontrado.horario);
-                this.formEditarEvento.get('ubicacion')?.setValue(eventoEncontrado.ubicacion);
-            }
+                        this.formEditarEvento.get('titulo')?.setValue(response.titulo);
+                        this.formEditarEvento.get('imagenUrl')?.setValue(response.imagenUrl);
+                        this.formEditarEvento.get('descripcion')?.setValue(response.descripcion);
+                        this.formEditarEvento.get('fecha')?.setValue(fechaConFormato);
+                        this.formEditarEvento.get('horario')?.setValue(response.horario);
+                        this.formEditarEvento.get('ubicacion')?.setValue(response.ubicacion);
+                    }
+                }
+            });
         });
     }
 
@@ -86,8 +88,8 @@ export class EditarEventoComponent {
             let imagenUrl: string = this.formEditarEvento.value.imagenUrl as string;
             let descripcion: string = this.formEditarEvento.value.descripcion as string;
             let fecha: string = this.formEditarEvento.value.fecha as string;
-            let horario: string = this.formEditarEvento.value.horario;
-            let ubicacion: string = this.formEditarEvento.value.ubicacion;
+            let horario: string = this.formEditarEvento.value.horario as string;
+            let ubicacion: string = this.formEditarEvento.value.ubicacion as string;
 
             let dia: string = fecha.substring(8);
             let mes: string = fecha.substring(5, 7);
@@ -95,7 +97,7 @@ export class EditarEventoComponent {
             let fechaConFormato: string = `${dia}/${mes}/${anio}`;
 
             let evento: Evento = {
-                id: this.id,
+                _id: this.id,
                 titulo: titulo,
                 imagenUrl: imagenUrl,
                 descripcion: descripcion,
@@ -104,9 +106,14 @@ export class EditarEventoComponent {
                 ubicacion: ubicacion
             }
 
-            this.eventoService.editar(evento);
-
-            this.router.navigate(['eventos']);
+            this.eventoService.editar(evento).subscribe({
+                next: response => {
+                    this.router.navigate(['eventos']);
+                },
+                error: error => {
+                    console.log(error);
+                }
+            });
         }
     }
 

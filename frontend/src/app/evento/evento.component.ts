@@ -18,7 +18,7 @@ export class EventoComponent implements OnInit {
     public evento?: Evento;
     public btn_atras: string = "< Ir atrás";
 
-    constructor(){}
+    constructor() { }
 
     /**
     * Recupera el ID a traves deL parámetro de la URL y busca la información del evento con el 
@@ -28,12 +28,12 @@ export class EventoComponent implements OnInit {
     */
     ngOnInit(): void {
         this.route.params.subscribe(param => {
-            const id: number = param['id'];
-            let evento = this.eventoService.obtenerPorId(id);
-            
-            if (evento) {
-                this.evento = evento;
-            }
+            const id: string = param['id'];
+            this.eventoService.obtenerPorId(id).subscribe({
+                next: response => {
+                    this.evento = response;
+                }
+            });
         });
     }
 }

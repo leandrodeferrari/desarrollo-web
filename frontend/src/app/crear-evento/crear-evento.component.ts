@@ -62,7 +62,7 @@ export class CrearEventoComponent {
             let fechaConFormato: string = `${dia}/${mes}/${anio}`;
 
             let evento: Evento = {
-                id: 0,
+                _id: "",
                 titulo: titulo,
                 imagenUrl: imagenUrl,
                 descripcion: descripcion,
@@ -71,9 +71,14 @@ export class CrearEventoComponent {
                 ubicacion: ubicacion
             }
 
-            this.eventoService.crear(evento);
-
-            this.router.navigate(['eventos']);
+            this.eventoService.crear(evento).subscribe({
+                next: response => {
+                    this.router.navigate(['eventos']);
+                },
+                error: error => {
+                    console.log(error);
+                }
+            });
         }
     }
 

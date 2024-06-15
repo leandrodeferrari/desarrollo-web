@@ -51,7 +51,7 @@
     <div class="row row-cols-1 row-cols-md-3 g-4 mt-4">
 
         <!-- Cards de Eventos -->
-        @for (evento of eventos; track evento.id) {
+        @for (evento of eventos; track evento._id) {
         <div class="col">
             <div class="card">
                 <!-- Imagen del evento -->
@@ -75,14 +75,14 @@
 
                         <!-- Botones para realizar acciones:  Ver, Modificar y Borrar -->
                         <div class="col-6 text-end align-content-center">
-                            <button type="button" [routerLink]="['/eventos', evento.id]"
+                            <button type="button" [routerLink]="['/eventos', evento._id]"
                                 class="btn btn-primary btn-sm bg-success border-0 me-2"><i
                                     class="bi bi-eye"></i></button>
-                            <button type="button" [routerLink]="['/editar-evento', evento.id]"
+                            <button type="button" [routerLink]="['/editar-evento', evento._id]"
                                 class="btn btn-primary btn-sm bg-primary border-0 me-2"><i
                                     class="bi bi-pen"></i></button>
                             <button type="button" class="btn btn-primary btn-sm bg-danger border-0"
-                                (click)="borrar(evento.id)"><i class="bi bi-trash3"></i></button>
+                                (click)="borrar(evento._id)"><i class="bi bi-trash3"></i></button>
                         </div>
                     </div>
                 </div>
