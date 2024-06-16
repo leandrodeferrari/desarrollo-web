@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const color = require('colors');
-
+const colors = require('colors');
 dotenv.config();
 
 const URI = `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABASE_PASSWORD}@cluster0.arqngzm.mongodb.net/eventHub?retryWrites=true&w=majority&appName=${process.env.CLUSTER_NAME}`
-
 
 const conectarDB = async () => {
     try {

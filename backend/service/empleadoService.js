@@ -8,6 +8,23 @@ exports.getEmpleados = async () => {
     }
 }
 
+exports.getEmpleadoPorId = async (id) => {
+    try {
+        return await empleadoRepository.obtenerEmpleadoPorIdDB(id);
+    } catch (error) {
+        console.log(error);
+    }
+}
+
+exports.createEmpleado = async ({nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo }) => {
+    try {
+        return await empleadoRepository.crearEmpleadoDB({ nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo  });
+    } catch (error) {
+        console.log(error);
+    }
+
+}
+
 exports.putEmpleados = async () => {
 
 }

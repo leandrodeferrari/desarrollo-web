@@ -6,6 +6,8 @@ const empleadoRouter = express.Router();
 empleadoRouter.use(express.json());
 
 empleadoRouter.get('/', empleadoController.readEmpleados);
+empleadoRouter.get('/:id', empleadoController.readEmpleadoPorId);
+empleadoRouter.post('/', empleadoController.createEmpleado)
 empleadoRouter.delete('/:id', empleadoController.deleteEmpleado);
 empleadoRouter.put('/:id', empleadoController.updateEmpleado)
 

@@ -3,6 +3,7 @@ const cors = require('cors');
 const conectarDB = require('./db/db');
 const eventoRouter = require('./router/eventoRouter');
 const usuariosRouter = require('./router/usuariosRouter');
+const empleadoRouter = require('./router/empleadoRouter');
 
 const app = express();
 const PORT = process.env.PORT || 3000;
