@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
+const color = require('colors');
 
 dotenv.config();
 
@@ -9,11 +10,11 @@ const URI = `mongodb+srv://${process.env.DATABASE_USERNAME}:${process.env.DATABA
 const conectarDB = async () => {
     try {
         await mongoose.connect(URI);
-        console.log("DB conectada correctamente.");
+        console.log("Base de datos conectada correctamente.".bgGreen);
     } catch (error) {
-        console.log(error);
+        console.log("Ocurrió un error en la conexión con base de datos: ".bgRed, error);
         process.exit(1);
     }
 }
 
-module.exports = conectarDB
+module.exports = conectarDB;
