@@ -1,5 +1,8 @@
 const loginODM = require('./usuarios');
+const conectarDB = require('../db/db');
 const color = require('colors');
+
+conectarDB();
 
 class UsuariosRepository {
     async login(email, password) {
