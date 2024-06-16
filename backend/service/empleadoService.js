@@ -18,15 +18,19 @@ exports.getEmpleadoPorId = async (id) => {
 
 exports.createEmpleado = async ({nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo }) => {
     try {
-        return await empleadoRepository.crearEmpleadoDB({ nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo  });
+        return await empleadoRepository.crearEmpleadoDB({ nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo});
     } catch (error) {
         console.log(error);
     }
 
 }
 
-exports.putEmpleados = async () => {
-
+exports.putEmpleados = async ({ nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo},id) => {
+    try {
+        return await empleadoRepository.putEmpleadosDB({ nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo},id);
+    } catch (error) {
+        console.log(error);
+    }
 }
 
 exports.deleteEmpleado = async (id) => {

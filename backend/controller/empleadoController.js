@@ -26,6 +26,7 @@ exports.readEmpleadoPorId = async (req, res) => {
         return res.status(500).json({ mensaje: `Hubo un error al intentar obtener el empleado con el ID: ${id}.` });
     }
 }
+
  exports.createEmpleado = async (req, res) => {
     try {
         const { nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo  } = req.body;
@@ -35,7 +36,7 @@ exports.readEmpleadoPorId = async (req, res) => {
         return res.status(201).send(empleado);
     } catch (error) {
         console.log(error);
-        return res.status(500).send({ mensaje: "Hubo un error al crear el evento." })
+        return res.status(500).send({ mensaje: "Hubo un error al crear el empleado." })
     }
 
  }
@@ -55,6 +56,21 @@ exports.deleteEmpleado = async (req, res)=>{
 
 }
 
-exports.updateEmpleado = (req, res)=>{
-    
+exports.updateEmpleado = async (req, res)=>{
+    try{
+
+        let id = req.params.id;
+        const { nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo  } = req.body;
+        
+        let updateEmpleado = await empleadoService.putEmpleados({nombre, apellido, documento, categoria, fecha_nacimiento, email, modalidad_trabajo, hora_entrada, hora_salida, activo },id);
+        
+        if(!updateEmpleado){
+            return res.status(404).send("no existe EL EMPLEADO");
+        }
+        return res.status(200).send({ mensaje: "El EMPLEADO fue ACTULIZADO correctamente." });
+    }
+    catch (error) {
+        console.log(error)
+    }
 }
+    
