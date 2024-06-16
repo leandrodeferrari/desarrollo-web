@@ -59,7 +59,7 @@ export class AgregarEmpleadoComponent{
         let hora_salida: string = this.nuevoEmpleado.value.hora_salida as string;
         
         let empleado: Empleado = {
-            id: 0,
+            _id: "",
             nombre: nombre,
             apellido: apellido,
             documento: documento,

@@ -21,7 +21,7 @@ export class EditarEmpleadoComponent {
   private fb: FormBuilder = inject(FormBuilder);
   private empleadoService: EmpleadoService = inject(EmpleadoService);
   private router: Router = inject(Router);
-  private id: number = 0;
+  private id: string= "";
   public empleadoEditado: FormGroup;
   public empleado?:Empleado;
 
@@ -58,9 +58,9 @@ export class EditarEmpleadoComponent {
     *
     * @return {void}
     */
-    ngOnInit(): void {
+   /*  ngOnInit(): void {
       this.route.params.subscribe(param => {
-          const id: number = param['id'];
+          const id: string = param['id'];
           let empleadoFiltrado: Empleado = this.empleadoService.obtenerEmpleadosPorId(id);
 
           if (empleadoFiltrado) 
@@ -80,7 +80,7 @@ export class EditarEmpleadoComponent {
       });
      
       this.filtrarCategorias();
-    }
+    } */
     
     /**
      * Filtra la lista de categorías, eliminando la categoría que coincide con la categoría del empleado (this.empleado?.categoria) y guarda el resultado en categoriasFiltradas.
@@ -114,7 +114,7 @@ export class EditarEmpleadoComponent {
           let hora_salida: string = this.empleadoEditado.value.hora_salida as string
 
           let empleado: Empleado = {
-              id: this.id,
+              _id: this.id,
               nombre: nombre,
               apellido: apellido,
               documento: documento,

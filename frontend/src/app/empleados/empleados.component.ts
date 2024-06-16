@@ -16,24 +16,30 @@ import { EditarEmpleadoComponent } from '../editar-empleado/editar-empleado.comp
   styleUrl: './empleados.component.css'
 })
 
-export class EmpleadosComponent {
-
-
+export class EmpleadosComponent implements OnInit{
   private empleadoService = inject (EmpleadoService);
-  
-  public empleados: Empleado[] =  this.empleadoService.empleados;
+  public empleados: Empleado[] =  [];   
+  ngOnInit(): void {
 
+    this.empleadoService.obtenerTodosLosEmpleados().subscribe({
+      next: data => {
+        console.log(data)
+        this.empleados = data;
+      }, error: error =>{
+        console.log(error)
+      }
+    });
+  }
 
   constructor() {
-    this.empleados = this.empleadoService.obtenerTodosLosEmpleados();
  }
  /**
   * Confirma la acción de eliminar un empleado. En caso de que la acción sea requerida, se llama al método eliminarEmpleado, el cual recibe el id del empleado en cuestión, para eliminarlo del array empleados
   */
- borrar(id: number): void {
+ borrar(id: string): void {
 
     if (confirm("¿Estás seguro de que quieres eliminar este empleado?")){
-      this.empleados = this.empleadoService.eliminarEmpleado(id);
+      //this.empleados = this.empleadoService.eliminarEmpleado(id);
     }
 
   }

@@ -24,21 +24,24 @@ export class DetalleDeEmpleadoComponent implements OnInit {
   empleado_inactivo: string = 'El empleado actualmente no está activo en la compañía.';
   btn_atras: string ="< Ir atrás";
   
-
  /**
     * A través del parámetro de la URL obtiene el id del empleado y busca la información del empleado con el método del servicio. Si se encuentra el empleado, se asigna a la propiedad empleado.
     *
     * @return {void}
     */
   ngOnInit(): void {
-
-    this._route.params.subscribe(param => {
-      const id: number = param['id'];
-      let empleado = this.empleadoService.obtenerEmpleadosPorId(id);
-      
-      if (empleado) {
-          this.empleadoObtenido = empleado;
+    this._route.params.subscribe({
+      next: params =>{
+        this.empleadoService.obtenerEmpleadosPorId(params['id']).subscribe({
+          next: data => {
+            this.empleadoObtenido = data 
+          }, error: error =>{
+            console.log(error)
+          }
+        })
+      }, error: error => {
+        console.log(error)
       }
-  });
+    });
   }  
 }

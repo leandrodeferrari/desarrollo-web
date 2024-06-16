@@ -43,10 +43,10 @@
                         <th scope="col">Acciones</th>
                     </tr>
                 </thead>
-                @for (empleado of empleados; track empleado.id){
+                @for (empleado of empleados; track empleado._id; ){
                     <tbody>
                         <tr>
-                            <th scope="row">{{empleado.id}}</th>
+                            <th scope="row">{{empleado._id}}</th>
                             <td>{{empleado.nombre}}</td>
                             <td>{{empleado.apellido}}</td>
                             <td>{{empleado.categoria}}</td>
@@ -62,12 +62,12 @@
                             <td>
                                 <div class="col-12 centrar">
                                     <button type="button" class="btn btn-primary btn-sm bg-success mb-2 mb-lg-0 border-0"
-                                        style="margin-right: 4px;" [routerLink]="['/empleados', empleado.id]"><i class="bi bi-eye"></i></button>
+                                        style="margin-right: 4px;" [routerLink]="['/empleados', empleado._id]"><i class="bi bi-eye"></i></button>
     
                                     <button type="button" class="btn btn-primary btn-sm bg-primary mb-2 mb-lg-0 border-0"
-                                        style="margin-right: 4px;" [routerLink]="['/editar-empleado', empleado.id]" ><i class="bi bi-pen"></i></button>
+                                        style="margin-right: 4px;" [routerLink]="['/editar-empleado', empleado._id]" ><i class="bi bi-pen"></i></button>
                                     <button type="button" class="btn btn-primary btn-sm bg-danger mb-2 mb-lg-0 border-0"
-                                        style="margin-right: 4px;" (click)="borrar(empleado.id)"><i class="bi bi-trash3"></i></button>
+                                        style="margin-right: 4px;" (click)="borrar(empleado._id)"><i class="bi bi-trash3"></i></button>
                                 </div>
                             </td>
                         </tr>
