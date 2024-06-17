@@ -18,7 +18,6 @@ export class AgregarEmpleadoComponent{
   private router: Router = inject(Router);
   private empleadoService: EmpleadoService = inject(EmpleadoService); 
   public nuevoEmpleado: FormGroup;
-
   btn_atras: string ="< Ir atrás";// Propiedad para el formulario
 
   constructor(private fb:FormBuilder){
@@ -72,10 +71,17 @@ export class AgregarEmpleadoComponent{
             activo: true
           }
 
-        this.empleadoService.agregarNuevoEmpleado(empleado);
-        this.router.navigate(['empleados']);
+        this.empleadoService.agregarNuevoEmpleado(empleado).subscribe({
+          next: response => {
+            this.router.navigate(['empleados'])
+          },
+          error: error => {
+            console.log(error);
+          }
+        });
+       
       }
- }
+    }
 
    /**
     * Comprueba si un control dado del formulario tiene un error específico y ha sido tocado.

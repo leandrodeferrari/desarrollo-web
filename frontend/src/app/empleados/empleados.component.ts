@@ -39,7 +39,20 @@ export class EmpleadosComponent implements OnInit{
  borrar(id: string): void {
 
     if (confirm("¿Estás seguro de que quieres eliminar este empleado?")){
-      //this.empleados = this.empleadoService.eliminarEmpleado(id);
+      this.empleadoService.eliminarEmpleado(id).subscribe({
+        next: response => {
+          if(response){
+            this.empleadoService.obtenerTodosLosEmpleados().subscribe({
+              next: response => {
+                this.empleados = response
+              }
+            });
+          }
+        },
+        error: error => {
+          console.log(error);
+        }
+      })
     }
 
   }

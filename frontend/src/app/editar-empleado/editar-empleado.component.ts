@@ -11,12 +11,11 @@ import { EmpleadosComponent } from '../empleados/empleados.component'
 @Component({
   selector: 'app-editar-empleado',
   standalone: true,
-  imports: [NavbarComponent, FooterComponent,ReactiveFormsModule, RouterLink, EmpleadosComponent],
+  imports: [NavbarComponent, FooterComponent,ReactiveFormsModule, RouterLink],
   templateUrl: './editar-empleado.component.html',
   styleUrl: './editar-empleado.component.css'
 })
 export class EditarEmpleadoComponent {
-  
   private route: ActivatedRoute = inject(ActivatedRoute);
   private fb: FormBuilder = inject(FormBuilder);
   private empleadoService: EmpleadoService = inject(EmpleadoService);
@@ -45,9 +44,9 @@ export class EditarEmpleadoComponent {
         apellido: ['', Validators.required],
         documento: ['', Validators.required],
         fecha_nacimiento:  ['', Validators.required],
-        categoria:  [this.empleado?.categoria || '', Validators.required],
+        categoria:  [this.empleado?.categoria, Validators.required],
         email: ['', [Validators.required, Validators.email]],
-        modalidad_trabajo: [this.empleado?.modalidad_trabajo || '', Validators.required],
+        modalidad_trabajo: [this.empleado?.modalidad_trabajo, Validators.required],
         hora_entrada: ['', Validators.required],
         hora_salida: ['', Validators.required]
     })
@@ -58,29 +57,33 @@ export class EditarEmpleadoComponent {
     *
     * @return {void}
     */
-   /*  ngOnInit(): void {
+     ngOnInit(): void {
       this.route.params.subscribe(param => {
-          const id: string = param['id'];
-          let empleadoFiltrado: Empleado = this.empleadoService.obtenerEmpleadosPorId(id);
-
-          if (empleadoFiltrado) 
+        const id: string = param['id'];
+        this.empleadoService.obtenerEmpleadosPorId(id).subscribe({
+          next: response =>{
+            if (response) 
             {
-              this.empleado = empleadoFiltrado;
+              this.empleado = response;
               this.id = id;
-              this.empleadoEditado.get('nombre')?.setValue(empleadoFiltrado.nombre);
-              this.empleadoEditado.get('apellido')?.setValue(empleadoFiltrado.apellido);
-              this.empleadoEditado.get('documento')?.setValue(empleadoFiltrado.documento);
-              this.empleadoEditado.get('fecha_nacimiento')?.setValue(empleadoFiltrado.fecha_nacimiento);
-              this.empleadoEditado.get('categoria')?.setValue(empleadoFiltrado.categoria);
-              this.empleadoEditado.get('email')?.setValue(empleadoFiltrado.email);
-              this.empleadoEditado.get('modalidad_trabajo')?.setValue(empleadoFiltrado.modalidad_trabajo);
-              this.empleadoEditado.get('hora_entrada')?.setValue(empleadoFiltrado.hora_entrada);
-              this.empleadoEditado.get('hora_salida')?.setValue(empleadoFiltrado.hora_salida);
+
+              this.empleadoEditado.get('nombre')?.setValue(response.nombre);
+              this.empleadoEditado.get('apellido')?.setValue(response.apellido);
+              this.empleadoEditado.get('documento')?.setValue(response.documento);
+              this.empleadoEditado.get('fecha_nacimiento')?.setValue(response.fecha_nacimiento);
+              this.empleadoEditado.get('categoria')?.setValue(response.categoria);
+              this.empleadoEditado.get('email')?.setValue(response.email);
+              this.empleadoEditado.get('modalidad_trabajo')?.setValue(response.modalidad_trabajo);
+              this.empleadoEditado.get('hora_entrada')?.setValue(response.hora_entrada);
+              this.empleadoEditado.get('hora_salida')?.setValue(response.hora_salida);
             }
+
+          }
+        })   
       });
      
       this.filtrarCategorias();
-    } */
+    } 
     
     /**
      * Filtra la lista de categorías, eliminando la categoría que coincide con la categoría del empleado (this.empleado?.categoria) y guarda el resultado en categoriasFiltradas.
@@ -126,12 +129,17 @@ export class EditarEmpleadoComponent {
               hora_salida: hora_salida,
               activo: true
           }
-          console.log(this.empleadoEditado)
-          this.empleadoService.editarEmpleado(empleado);
-
-          this.router.navigate(['empleados']);
+          
+          this.empleadoService.editarEmpleado(empleado).subscribe({
+            next: response => {
+              this.router.navigate(['empleados']);
+            },
+            error: error => {
+              console.log(error);
+            }
+          });
+        }
       }
-  }
 
     /**
     * Comprueba si un control dado del formulario tiene un error específico y ha sido tocado.

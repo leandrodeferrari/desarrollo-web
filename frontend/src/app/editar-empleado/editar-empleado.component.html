@@ -90,7 +90,7 @@
                     <div class="mb-3 col-12 col-md-6">
                         <label for="cargo" class="form-label">Cargo</label>
                         <select class="form-select" formControlName="categoria" id="cargo">
-                            <option [value]="empleado?.categoria" selected>{{ empleado?.categoria }}</option>
+                           
                             @for (categoria of categoriasFiltradas; track categoriasFiltradas.length) {
                                 <option [value]="categoria">{{ categoria }}</option>
                             }
@@ -127,7 +127,7 @@
                 <!-- Campo Modalidad de trabajo -->
                 <p>Modalidad de trabajo</p>     
                 <div class="form-check mb-3 ">
-                    <input class="form-check-input" name="modalidad_trabajo" id="Presencial" type="radio" value="Presencial" formControlName="modalidad_trabajo">
+                    <input class="form-check-input" name="modalidad_trabajo" id="Presencial" type="radio" value="Presencial"  formControlName="modalidad_trabajo">
                     <label class="form-check-label" for="Presencial">
                         Presencial
                     </label>
@@ -140,7 +140,7 @@
                 </div>
 
                 <div class="form-check mb-3">
-                    <input class="form-check-input" name="modalidad_trabajo" id="Mixto" type="radio" value="Mixto" formControlName="modalidad_trabajo" >
+                    <input class="form-check-input" name="modalidad_trabajo" id="Mixto" type="radio" value="Mixto"  formControlName="modalidad_trabajo" >
                     <label class="form-check-label"  for="Mixto">
                         Mixto
                     </label>
