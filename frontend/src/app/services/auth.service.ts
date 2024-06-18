@@ -1,27 +1,41 @@
-import { Injectable } from '@angular/core';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Observable, throwError } from 'rxjs';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
+
 export class AuthService {
-  private listadoUsuarios = [
-    { nombre: 'Juan', apellido: 'Centurión', email: 'centurion.juan@gmail.com', password: '12345678' },
-    { nombre: 'Leandro', apellido: 'Deferrari', email: 'deferrari.leandro@gmail.com', password: '12345678' },
-    { nombre: 'Jose', apellido: 'Taretto', email: 'taretto.jose@gmail.com', password: '12345678' },
-    { nombre: 'Marinela', apellido: 'Montilla', email: 'montilla.marinela@gmail.com',password: '12345678'}
-  ];
+  private http: HttpClient = inject(HttpClient);
+  private url = "http://localhost:3000/api/usuarios";
 
   constructor() { }
 
   /**
-   * Este méstodo se utiliza para validar el email y contraseña que ingresa el usuario con el fin de permitir el inicio de sesión en la app.
-   * @param {Any} usuario Recibe como parámetro el usuario 
    * 
+   * @param usuario : Objeto "usuario" con sus credenciales (email, password).
+   * @returns : devuelve la respuesta del POST al servidor con el objeto "usuario".
    */
-  login(usuario:any) {
-    const login = this.listadoUsuarios.find(
-      u => u.email === usuario.email && u.password === usuario.password
+  login(usuario: any): Observable<any> {
+    return this.http.post<any>(this.url, usuario).pipe(
+      catchError(this.verificarErrores)
     );
-    return login ? login : undefined;
+  }
+
+  /**
+   * Verifica si ocurren errores al recibir los paquetes HTTP.
+   * @param http : paquete HTTP enviado desde el servidor.
+   * @returns : devuelve un mensaje notificando el error.
+   */
+  private verificarErrores(http: HttpErrorResponse) {
+    let mensajeError = 'Error desconocido.'; //Sino logra 
+    if (http.error instanceof ErrorEvent) {
+      mensajeError = `Error en el front: ${http.error.message}`;
+    } else {
+      mensajeError = `Error en el back:\nCódigo: ${http.status}\nMensaje: ${http.message}`;
+    }
+    return throwError(() => new Error(mensajeError));
   }
 }

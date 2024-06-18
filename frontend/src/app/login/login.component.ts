@@ -22,7 +22,6 @@ export class LoginComponent {
   private formulario : FormBuilder = inject(FormBuilder);
   protected formLogin : FormGroup;
   ocultarPassword : boolean = true;
-  mensajeLogin: string = "";
   falloLogin: boolean = false;
 
   constructor() {
@@ -46,18 +45,17 @@ export class LoginComponent {
           password: password
         }
   
-        const resultado = this.authService.login(usuario);
-        console.log("Email usuario: ",resultado?.email.green);
-        console.log("Password: ",resultado?.password.green);
-  
-        if (resultado) {
-          setTimeout(() => {
-            this.router.navigate(['/home']);
-          }, 3000);
-        } else {
-          this.falloLogin=true;
-          console.log("Usuario no registrado.".bgRed);
-        }
+        this.authService.login(usuario).subscribe({
+          next: () => {
+            setTimeout(() => {
+              this.router.navigate(['/home']);
+            }, 3000);
+          },
+          error: error => {
+            this.falloLogin = true;
+            console.log("Usuario no registrado.".bgRed, error.message);
+          }
+        });
       }
     }
     catch (err) {
