@@ -23,7 +23,6 @@ export class EmpleadosComponent implements OnInit{
 
     this.empleadoService.obtenerTodosLosEmpleados().subscribe({
       next: data => {
-        console.log(data)
         this.empleados = data;
       }, error: error =>{
         console.log(error)

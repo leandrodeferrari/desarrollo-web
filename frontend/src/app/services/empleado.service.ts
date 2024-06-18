@@ -25,21 +25,20 @@ export class EmpleadoService {
   }
 
   /**
-   *  Es un método que permite buscar un registro cuando recibe por parámetro un id. Además en caso de que no exista ningún registro que coincida con el id que se pasó por el paramámetro, el mismo devuelve un registro vacío a través del método obtenerEmpleadovacío. 
+   *  Es un método que permite buscar un registro cuando recibe por parámetro un id.
    * @param {string} id - Recibe como parámetro un id
-   * @returns {Empleado} - Retorna el empleado cuyo id coincida con el id que se le pasó por parámetro o un empleado con valores por defecto en la propiedades.
+   * @returns {Empleado} - Retorna un observable de tipo empleado cuyo id coincida con el id que se le pasó por parámetro.
    * 
    */
   
  obtenerEmpleadosPorId(id: string): Observable <Empleado> {
-    //const empleado = this.empleados.find(empleado => empleado._id == id);
     return this._httpClient.get<Empleado>(`${this.url}/${id}`);
   } 
 
   /**
    * Es un método que permite agregar un registro cuando recibe por parámetro un objeto de tipo Empleado. 
-   * @param {Empleado} empleado - Recibe por parámetro un empleado que se agregará en el array empleados.
-   * @returns {Empleado} - Retorna el empleado creado
+   * @param {Empleado} empleado - Recibe por parámetro un empleado.
+   * @returns {Empleado} - Retorna un obervable de tipo empleado.
    */
 
 
@@ -48,7 +47,7 @@ export class EmpleadoService {
   }
 
   /**
-   * Es un método que permite modificar un empleado cuando recibe por parámetro un objeto de tipo Empleado. Luego recorre el array de empleados para encontrar el id del empleado que coincida con el id del empleado que se le pasa por parametro al método y le asigna los nuevos valores. 
+   * Es un método que permite modificar un empleado cuando recibe por parámetro un objeto de tipo Empleado.
    * @param {Empleado} empleadomodificado Recibe el empleado con los datos modificados.
    */
   editarEmpleado(empleado: Empleado): Observable <Empleado> {
@@ -56,8 +55,8 @@ export class EmpleadoService {
   } 
 
    /**
-  * Elimina un empleado del array empleados que coincida con el id que se le pasó por parámetro.
-  * @param {number} id Es el id del empleado que se quiere eliminar.
+  * Elimina un empleado coincida con el id que se le pasó por parámetro.
+  * @param {string} id Es el id del empleado que se quiere eliminar.
   * 
   */
  eliminarEmpleado(id: string): Observable <Empleado> {
