@@ -12,7 +12,6 @@ conectarDB();
 exports.getEmpleadosDB = async () => {
     try {
         let empleados = await Empleado.find();
-        console.log(empleados)
         return empleados;
     } catch (error) {
         console.log(error);
