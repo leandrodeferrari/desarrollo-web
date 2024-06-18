@@ -1,5 +1,12 @@
 const eventoService = require('../service/eventoService');
 
+/**
+ * Obtiene todos los eventos y los envía como respuesta.
+ *
+ * @param {Object} req - Solicitud.
+ * @param {Object} res - Respuesta.
+ * @return Retorna la respuesta con los datos del evento o rechaza con un mensaje de error.
+ */
 exports.obtenerTodosLosEventos = async (req, res) => {
     try {
         let eventos = await eventoService.obtenerTodosLosEventos();
@@ -11,6 +18,13 @@ exports.obtenerTodosLosEventos = async (req, res) => {
     }
 }
 
+/**
+ * Obtiene un evento por su ID.
+ *
+ * @param {Object} req - Solicitud.
+ * @param {Object} res - Respuesta.
+ * @return Retorna el evento buscado por ID o lo rechaza con un error.
+ */
 exports.obtenerEventoPorId = async (req, res) => {
     try {
         let id = req.params.id;
@@ -28,6 +42,13 @@ exports.obtenerEventoPorId = async (req, res) => {
     }
 }
 
+/**
+ * Crea un nuevo evento con los datos proporcionados.
+ *
+ * @param {Object} req - Solicitud, que contiene los datos del evento en el body.
+ * @param {Object} res - Respuesta.
+ * @return Retorna el evento creado o lo rechaza con un error.
+ */
 exports.crearEvento = async (req, res) => {
     try {
         const { titulo, imagenUrl, descripcion, fecha, horario, ubicacion } = req.body;
@@ -41,6 +62,13 @@ exports.crearEvento = async (req, res) => {
     }
 }
 
+/**
+ * Modifica un evento con los datos proporcionados.
+ *
+ * @param {Object} req - Solicitud, que contiene los datos del evento en el body y el ID en el URL param.
+ * @param {Object} res - Respuesta.
+ * @return Retorna el evento modificado o lo rechaza con un error.
+ */
 exports.modificarEvento = async (req, res) => {
     try {
         const { titulo, imagenUrl, descripcion, fecha, horario, ubicacion } = req.body;
@@ -59,6 +87,13 @@ exports.modificarEvento = async (req, res) => {
     }
 }
 
+/**
+ * Elimina un evento con el ID proporcionado.
+ *
+ * @param {Object} req - Solicitud, que contiene el ID en el URL param.
+ * @param {Object} res - Respuesta
+ * @return Retorna el resultado de la operación de borrado o lo rechaza con un error.
+ */
 exports.eliminarEvento = async (req, res) => {
     try {
         let id = req.params.id;
@@ -70,7 +105,6 @@ exports.eliminarEvento = async (req, res) => {
         } else {
             return res.status(200).send({ mensaje: "El evento fue eliminado correctamente." });
         }
-
     } catch (error) {
         console.log(error);
         return res.status(500).send({ mensaje: `Hubo un error al eliminar el evento, con el ID: ${id}.` })
