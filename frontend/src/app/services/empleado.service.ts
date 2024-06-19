@@ -9,7 +9,7 @@ import { Observable } from 'rxjs';
 
 export class EmpleadoService {
 
-  private url = 'http://127.0.0.1:3101/api/empleados' // URL Base
+  private url = 'http://127.0.0.1:3000/api/empleados' // URL Base
   private _httpClient = inject(HttpClient)
 
   public empleados : Empleado[] = [];
