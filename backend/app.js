@@ -15,15 +15,6 @@ app.use('/api/usuarios', usuariosRouter);
 app.use('/api/empleados', empleadoRouter);
 app.get('/', (req, res) => { res.send('Probando.'); }); //Endpoint por defecto.
 
-//Middleware de manejo de errores:
-app.use((err, req, res, next) => { 
-    console.error(err.stack);
-    res.status(500).send({
-      message: 'Error en el servidor.',
-      error: err.message
-    });
-});
-
 //Inicialización del servidor:
 app.listen(PORT, () => {
     console.log(`El servidor está escuchando en el puerto: ${PORT}`)
